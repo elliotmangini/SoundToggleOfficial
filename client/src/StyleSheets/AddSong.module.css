@@ -1,0 +1,16 @@
+.add_song_title {
+    margin-bottom: 0;
+    margin-top: 1.5rem;
+}
+
+.add_form input::placeholder {
+    text-align: center;
+}
+
+.add_form input {
+    text-align: center;
+}
+
+.add_track_button {
+    padding: 10px;
+}

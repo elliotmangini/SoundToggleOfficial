@@ -1,0 +1,18 @@
+.play_button {
+    width: 25px;
+    height: 25px;
+    margin-top: 1px;
+    margin-left: 5px;
+  }
+  
+  .icon_container:hover .play_button {
+    /* fill: var(--white-1); */
+  }
+
+  .playlist_play_button {
+    width: 12px;
+    transform: translateY(2.5px);
+    margin-right: 14px;
+    margin-left: 6px;
+    margin-top: -5px;
+  }

@@ -1,0 +1,28 @@
+.file_uploader {
+    /* margin: 0; */
+}
+
+.file_selector {
+    padding: 3px;
+    text-align: center;
+    font-size: .6rem;
+    width: 80px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: auto;
+    max-width: 100%;
+    /* font-family: 'Courier New', Courier, monospace !important; */
+}
+
+.file_selected {
+    background-color: var(--success);
+    border-radius: 0;
+    /* font-family: 'Courier New', Courier, monospace !important; */
+
+}
+
+.no_file {
+    background-color: grey;
+    border-radius: 0;
+}

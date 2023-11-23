@@ -1,0 +1,10 @@
+.logout_button {
+    padding: 10px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.logout_button:hover {
+    transform: scale(1.05);
+}

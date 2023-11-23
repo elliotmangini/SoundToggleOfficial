@@ -1,0 +1,731 @@
+ul {
+  list-style-type: none;
+}
+
+.player_panel {
+  background-color: var(--primary);
+  flex-grow: 1; /* Allow it to grow and take available space */
+  max-width: 500px;
+  border-radius: 1rem;
+  margin: auto;
+}
+
+.upper_player {
+  padding: 1rem;
+  padding-bottom: 0;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.lock_button_locked,
+.lock_button_unlocked {
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 1.5rem;
+  /* border: 2px solid red; */
+  position: absolute;
+  left: 0%;
+  top: 1rem;
+}
+
+.lock_button_locked::before {
+  /* Locked lock icon */
+  content: "\1F512"; /* Unicode character for a locked lock */
+}
+
+.lock_button_unlocked::before {
+  /* Unlocked lock icon */
+  content: "\1F513"; /* Unicode character for an unlocked lock */
+}
+
+.upper_button {
+  cursor: pointer;
+  font-size: 1rem;
+  position: absolute;
+  padding: 10px;
+  background-color: var(--primary-selected);
+  color: var(--white-2);
+  top: .8rem;
+  margin: 0;
+  z-index: 1;
+  /* box-shadow: 1px 1px 5px rgb(0, 0, 0); */
+}
+
+.export_button {
+  right: 2%;
+}
+
+.edit_button {
+  left: 2%;
+}
+
+.publish_button {
+  left: 2%;
+}
+
+.theme_edit_button {
+  z-index: 1;
+  opacity: 0 !important;
+  font-size: .8rem;
+  /* transition: opacity 1s ease-out 1s; */
+}
+
+.upper_button:hover {
+  background-color: var(--success);
+  color: black;
+  transform: scale(1.03);
+}
+
+
+.main_artwork {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  margin-top: .5rem;
+  opacity: 1;
+  transition: opacity 1s ease-out 1s;
+}
+
+.opacity_zero {
+  opacity: 0 !important;
+}
+
+.opacity_one {
+  opacity: 1 !important;
+}
+
+.user_controls {
+  margin: 0;
+  /* padding: 0; */
+  transition: opacity 1s ease-out 1s;
+}
+
+.timeline_container {
+  margin: 0;
+}
+
+.timeline {
+  width: 50%;
+  min-width: 220px;
+}
+
+.duration {
+  margin-top: .3rem;
+  font-size: .7rem;
+  user-select: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  background-color: #2a2a2a;
+  border-radius: 2px;
+  height: 5px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  cursor: pointer;
+  background-color: gray;
+  transform: translateY(-5px); /* Adjust this value as needed to align the thumb */
+}
+
+.playlist_div {
+  margin: 0;
+  padding: 0;
+  /* background-color: grey; */
+}
+
+.playlist {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  margin-bottom: 1rem;
+  width: 100%;
+  padding: 0px;
+  padding-bottom: 1rem;
+  
+}
+
+.song {
+  font-size: 1rem;
+  /* border: 1px solid red; */
+  text-align: left;
+  width: 90%;
+  max-width: 500px;
+  margin: 2px;
+  user-select: none;
+  border-radius: 5px;
+  padding: .3rem;
+}
+
+.editing_panel_bkgd {
+  /* background: linear-gradient(to top, var(--primary-selected), var(--primary-lightened) 85%, var(--primary-selected-highlight) 95%, var(--primary-selected-highlight)) !important; */
+  margin-bottom: 10px;
+}
+
+.playlist_song_play {
+  width: 12px;
+  transform: translateY(2.5px);
+  margin-right: 15px;
+  margin-left: 5px;
+  margin-top: -5px;
+}
+
+.playlist_pencil {
+  width: 20px;
+  margin-right: 7px;
+  margin-left: 5px;
+  margin-top: -5px;
+}
+
+.playlist_pencil:hover {
+  transform: scale(1.2);
+}
+
+.playlist_save {
+  width: 20px;
+  margin-right: 15px;
+  margin-left: 5px;
+  margin-top: -5px;
+  animation: blink 1s infinite;
+}
+
+.playlist_save:hover {
+  transform: scale(1.2);
+}
+
+@keyframes blink {
+  0%, 49% {
+    filter: brightness(100%); /* Original color */
+  }
+  50%, 100% {
+    filter: brightness(20%); /* Darker color */
+  }
+}
+
+/* .playing_song {
+  background-color: var(--primary-selected);
+} */
+
+.playback_buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: .2rem;
+}
+
+.icon_container {
+  width: 35px;
+  height: 35px;
+  margin: .25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: var(--white-1);
+  cursor: pointer;
+  transition: .04s;
+  /* border: 2px solid red; */
+}
+
+.play_container {
+  width: 60px;
+  height: 60px;
+}
+
+.icon_container:hover {
+  transform: scale(1.05);
+}
+
+.previous {
+  transform: scaleX(-1);
+}
+
+.previous:hover {
+  transform: scaleX(-1) scale(1.05);
+}
+
+/* Define a class for the glowing effect */
+.glowing {
+    animation: glowing 1s infinite;
+  }
+  
+  /* Define the keyframes for the glowing animation */
+  @keyframes glowing {
+    0% {
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.7);
+    }
+    100% {
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    }
+}
+
+.toggle_module {
+  background-color: var(--white-1);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  margin: auto;
+  border-radius: 8px;
+  padding: 2px;
+  margin-bottom: 1.5rem;
+}
+
+.toggle_module p {
+  min-width: 80px;
+  margin: 0 0 0 0;
+}
+
+.toggle_switch {
+  display: inline-block;
+  position: relative;
+  width: 40px; /* Adjust the width to make it roughly 2/3 in size */
+  height: 20px; /* Adjust the height accordingly */
+  margin: 8px 10px 8px 10px;
+}
+
+.toggle_switch input[type="checkbox"] {
+  display: none;
+}
+
+.toggle_switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--accent);
+  border-radius: 30px;
+  transition: 0.4s;
+  box-shadow: 0 0 0 1.6px gray; /* control the frame around the slider */
+}
+
+.toggle_switch input[type="checkbox"]:checked + .slider {
+  background-color: var(--secondary);
+}
+
+.toggle_switch .slider:before {
+  position: absolute;
+  content: "";
+  height: 14px; /* Adjust the size of the circle */
+  width: 14px; /* Adjust the size of the circle */
+  left: 3px; /* Adjust the position */
+  bottom: 3px; /* Adjust the position */
+  background-color: var(--white-1);
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+.toggle_switch input[type="checkbox"]:checked + .slider:before {
+  transform: translateX(20px); /* Adjust the translation for the smaller size */
+}
+
+/* .editing {
+  background-color: var(--success);
+} */
+
+.published {
+  background-color: var(--tertiary);
+}
+
+.song_edit_panel {
+  border-radius: 5px;
+  width: 100%;
+  margin: auto;
+  /* margin: 0; */
+  padding: 5px;
+  /* background: linear-gradient(to bottom, var(--primary-lightened), transparent); */
+  /* border: 1px solid var(--primary-selected); */
+  box-sizing: border-box;
+  margin-top: 2px;
+}
+
+.playlist_item {
+  display: flex;
+  align-items: center;
+  cursor: default;
+}
+
+.playlist_item span {
+  margin-left: auto;
+  margin-right: .7rem;
+  /* margin-right: 2rem;
+  text-align: left;
+  width: 150px; */
+}
+
+.share_and_status {
+  display: flex;
+  margin: 0;
+  /* align-items: baseline; */
+}
+
+.green_bubble {
+  background-color: #78b13f; /* Green bubble */
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  align-self: center;
+  margin-right: .3rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  /* box-shadow: 2px 2px 10px rgba(0, 0, 0, .3); */
+}
+
+.check {
+  position: relative;
+}
+
+.check::before {
+  content: '';
+  position: absolute;
+  width: 9px;
+  height: 3.5px;
+  border-left: 3px solid rgb(114, 114, 114);
+  border-bottom: 3px solid rgb(114, 114, 114);
+  transform: rotate(-45deg);
+  margin-top: -4px;
+  margin-left: -6.3px;
+}
+
+.red_bubble {
+  background-color: #b13f3f; /* Red bubble */
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  margin-left: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: .3rem;
+
+}
+
+.x {
+  position: relative;
+}
+
+.x::before,
+.x::after {
+  content: '';
+  position: absolute;
+  width: 13px;
+  height: 2.5px;
+  background: rgb(164, 164, 164);
+  top: 50%;
+  left: 50%;
+  margin-top: -1.4px;
+  margin-left: -7px;
+}
+
+.x::before {
+  transform: rotate(45deg);
+}
+
+.x::after {
+  transform: rotate(-45deg);
+}
+
+.share_button {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -2px;
+}
+
+.share_button:hover {
+  transform: scale(1.1);
+}
+
+.delete_button {
+  /* float: right;
+  padding: 0;
+  margin: 0;
+  color: black;
+  margin-top: 0 !important; */
+  background-color: transparent;
+  padding: 0;
+  cursor: default;
+}
+
+.share_button img {
+  width: 19px;
+  height: 19px;
+
+}
+
+.art_thumbnail {
+  height: 55px;
+  width: 55px;
+  margin: 0px;
+}
+
+.artwork_upload_trigger {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.artwork_upload_trigger::before {
+  content: ""; /* Default pencil icon or text */
+  display: block;
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(255, 0, 0, 0);
+  transition: background-color 0.2s;
+  transition: opacity 0.2s;
+  background-image: url('../Assets/pencil_icon.png');
+  /* background-size: contain; */
+  background-size: 52%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  opacity: 0;
+}
+
+.artwork_upload_trigger:hover::before {
+  display: block; /* Display the pencil icon on hover */
+  background-color: rgba(50, 50, 50, 0.676);opacity: 1;
+  z-index: 1;
+}
+
+.status_indicator {
+  position: relative;
+  border-radius: 10px;
+  margin: 5px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: .6rem;
+  /* background-color: grey; */
+  /* font-family: 'Courier New', Courier, monospace !important; */
+
+}
+
+.status_indicator span {
+  font-size: .8rem;
+}
+
+.file_found {
+  background-color: var(--success2);
+}
+
+/* Creating a pseudo-element for the icon */
+.file_found::before {
+  content: ""; /* Default pencil icon or text */
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+  background-color: rgba(255, 0, 0, 0);
+  transition: background-color 0.2s;
+  transition: opacity 0.2s;
+  border-radius: 10px;
+  background-image: url('../Assets/pencil_icon.png');
+  background-size: 20%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  opacity: 0;
+}
+
+.file_found:hover::before {
+  display: block; /* Display the pencil icon on hover */
+  background-color: rgba(50, 50, 50, 0.676);opacity: 1;
+  z-index: 1;
+}
+
+.file_missing {
+  background-image: url('../Assets/plus_icon.png');
+  background-size: 20%;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: opacity 0.2s;
+  opacity: 50%;
+  background-color: rgba(128, 128, 128, 0.626);
+}
+
+.file_missing:hover {
+  opacity: 1;
+}
+
+.file_missing::before {
+  content: ""; /* Default pencil icon or text */
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+  transition: background-color 0.2s;
+  border-radius: 10px;
+  background-image: url('../Assets/plus_icon.png');
+  background-size: 20%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  opacity: 1;
+}
+
+.file_missing:hover::before {
+  display: block; /* Display the pencil icon on hover */
+  background-color: rgba(50, 50, 50, 0.676);opacity: 1;
+  z-index: 1;
+  opacity: 1;
+
+}
+
+.upload_statuses {
+  margin: .15rem;
+  padding: .2rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.upload_buttons {
+  display: flex;
+  justify-content: space-between;
+  font-size: .6rem;
+  margin-top: 0;
+  
+}
+
+.author_link, .author_link:visited {
+  /* margin-left: auto;
+  margin-right: 1rem; */
+  color: white;
+  font-size: .6rem;
+}
+
+.song_info {
+  margin: 0;
+}
+
+.title {
+  margin: 0;
+}
+
+.artist {
+  margin: 0;
+}
+
+.popup_fullscreen {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.589);
+  /* border: 3px solid red; */
+  box-sizing: border-box;
+  display: flex;
+  z-index: 1;
+}
+
+.popup_panel {
+  width: 200px;
+  /* height: 180px; */
+  padding: 15px 0px 15px 0px;
+  background-color: var(--primary);
+  border-radius: 0 0 5px 5px;
+  border: 1px solid var(--white-3);
+  /* border-top: 2px solid var(--white-1); */
+  margin: auto;
+  position: relative;
+  /* display: flex; */
+  /* align-items: center;
+  justify-content: center; */
+  display: block;
+}
+
+
+.uploader_single {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.upload_thumbnail {
+  height: 50px;
+  width: 50px;
+  margin: 0;
+  margin-top: 1.5rem;
+}
+
+.exit_popup_button {
+  position: absolute;
+  right: 0%;
+  top: 0%;
+  background-color: var(--primary-selected);
+  width: 24px;
+  height: 20px;
+  border-radius: 0 0 0 5px;
+}
+
+.exit_popup_button:hover {
+  background: var(--fail);
+}
+
+.exit_popup_button::before,
+.exit_popup_button::after {
+  content: '';
+  position: absolute;
+  width: 13px;
+  height: 2.5px;
+  background: rgb(164, 164, 164);
+  top: 50%;
+  left: 50%;
+  margin-top: -1.4px;
+  margin-left: -6px;
+}
+
+.exit_popup_button::before {
+  transform: rotate(45deg);
+}
+
+.exit_popup_button::after {
+  transform: rotate(-45deg);
+}
+
+.attr_edit_input {
+  margin: 0;
+  padding: 0;
+  /* transform: translateY(-2px); */
+  /* margin-top: -10px !important; */
+}
+
+.secondary_attr_input {
+  margin-left: auto;
+  margin-right: .7rem;
+  text-align: right;
+}

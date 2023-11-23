@@ -1,0 +1,139 @@
+.theme_editor_panel {
+    /* background: linear-gradient(to bottom, var(--primary) 85%, var(--primary-selected-highlight) 95%, var(--primary-selected-highlight)) !important; */
+    /* background-color: white; */
+    position: absolute;
+    width: 100%;
+    max-width: 500px;
+    top: 90px;
+    border-radius: 1rem;
+    height: 400px;
+    z-index: 0;
+    margin: 0;
+}
+
+.preset_theme_button {
+    padding: 10px;
+    margin: 10px;
+    font-size: .8rem;
+    margin: 0px 5px 0px 5px;
+}
+
+.toggled_on {
+    background-color: var(--success);
+}
+
+.preset_theme_button:hover {
+    background-color: var(--success);
+}
+
+.theme_editor_panel form {
+    margin: 0 !important;
+}
+
+.button_container {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.form_container {
+    margin: 0;
+    /* margin-top: 15px; */
+    display: flex;
+    width: 100%;
+}
+
+.form_container form {
+    /* display: flex; */
+}
+
+.form_container * {
+    flex: 1;
+}
+
+.color_settings {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    width: 100%;
+    font-size: .8rem;
+}
+
+.left_column {
+    height: 100%;
+    width: 50%;
+}
+
+.left_color_setting {
+    margin: 0;
+    text-align: right;
+}
+
+.right_column {
+    height: 100%;
+    width: 50%;
+}
+
+.right_color_setting {
+    margin: 0;
+    text-align: left;
+}
+
+.form_container_right input {
+    max-width: 60px;
+    text-align: center;
+}
+
+.form_container_right div {
+    margin: 0;
+    margin-right: 8px;
+}
+
+.form_container_lower {
+    /* display: flex; */
+    margin: 0;
+    margin-top: 20px;
+    font-size: .9rem;
+}
+
+.form_container_lower label {
+    padding: 0;
+    margin: 0;
+    margin: auto;
+    margin: .2rem;
+}
+
+div.theme_editor_panel input.input_field {
+    background-color: rgb(119, 119, 119);
+    margin: .2rem;
+    width: 80px;
+}
+
+.update_configuration_button {
+    padding: 12px;
+    margin: 0;
+    margin-top: 2rem;
+}
+
+.update_configuration_button:hover {
+    transform: scale(1.05);
+}
+
+.nomenclature_settings {
+    width: 100%;
+    margin: 0;
+    font-size: .9rem;
+    display: flex;
+}
+
+.left_name_setting {
+    text-align: right;
+}
+
+
+.right_name_setting {
+    text-align: left;
+}
+
+.untoggled_name_input {
+    text-align: right;
+}

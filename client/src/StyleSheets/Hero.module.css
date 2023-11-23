@@ -1,0 +1,114 @@
+.top_container {
+    display: flex;
+    width: 100%;
+    margin: 0; /* Reset margin */
+    padding: 0; /* Reset padding */
+    justify-content: center; /* Horizontally center the content */
+    align-items: center;
+}
+
+.left_half {
+    flex: 1; /* Allow the left-half to take 50% of the available space */
+    font-size: 3rem;
+    font-weight: bold;
+    /* text-align: left; */
+    margin: 0;
+    max-width: 500px;
+    line-height: 3.5rem;
+}
+
+.left_text {
+    margin: 1rem;
+    margin-top: 0;
+    padding-top: 3rem;
+    padding-left: 2rem;
+    text-align: left;
+    /* text-align: center; */
+}
+
+.left_text span {
+
+}
+
+.get_yours_button {
+    width: 200px;
+    height: 50px;
+    background-color: var(--secondary);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 0;
+}
+
+
+.get_yours_a {
+    margin: 0;
+}
+
+.get_yours_button:hover {
+    background-color: var(--success);
+}
+
+.right_half {
+    flex: 1; /* Allow the right-half to take 50% of the available space */
+    max-width: 550px;
+    padding-right: 1rem;
+}
+
+.middle_container {
+    display: flex;
+    width: 100%;
+    margin: auto; /* Reset margin */
+    margin-top: 1rem;
+    padding: 0; /* Reset padding */
+    justify-content: center; /* Horizontally center the content */
+    background-color: #eef0f2;
+    color: black;
+    user-select: none;
+}
+
+.middle_content {
+    max-width: 900px; /* Set the maximum width */
+    display: flex;
+    justify-content: space-between; /* Adjust as needed */
+    align-items: center; /* Vertically center the content */
+    width: 100%;
+}
+
+.additional_blurb {
+    width: 400px;
+    padding: 20px 0px 20px 0px;
+}
+
+.additional_blurb h2 {
+    /* min-height: 80px; */
+    margin-top: 0;
+}
+
+
+.lower_container {
+    margin: 0; /* Reset margin */
+    padding: 1rem 8rem 1rem 8rem ; /* Reset padding */
+    justify-content: center; /* Horizontally center the content */
+    background-color: #011739;
+    user-select: none;
+}
+
+.lower_container h4 {
+    color: var(--secondary)
+}
+
+.lower_container h1, p {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.get_started_button {
+    padding: 16px;
+    margin-top: 1rem;
+}
+
+.get_started_button:hover {
+    background-color: var(--success);
+}

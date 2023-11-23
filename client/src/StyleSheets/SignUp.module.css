@@ -1,0 +1,23 @@
+.tag_button_container {
+}
+
+.tag_button {
+    background-color: var(--tertiary);
+    color: grey;
+    margin: .5rem;
+    padding: .5rem;
+}
+
+.signup_button {
+    font-size: 1.25rem;
+    padding: 1rem;
+}
+
+.signup_button:hover {
+    background-color: var(--success);
+}
+
+.selected {
+    color: black;
+    background-color: var(--secondary);
+}

@@ -1,0 +1,14 @@
+.upload_button {
+    padding: 10px;
+    margin: auto;
+    align-self: center;
+    width: 100%;
+}
+
+.upload_button:hover {
+    background-color: var(--success);
+}
+
+.hidden {
+    display: none;
+}

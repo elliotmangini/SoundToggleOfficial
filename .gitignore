@@ -1,0 +1,16 @@
+/app/assets/*
+
+log/
+
+/storage/
+
+node_modules/
+
+tmp/
+
+/config/
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

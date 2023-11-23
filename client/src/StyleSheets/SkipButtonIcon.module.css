@@ -1,0 +1,11 @@
+.skip_button {
+    width: 25px;
+    height: 25px;
+    margin-top: 2px;
+    margin-left: 5.5px;
+    /* fill: var(--primary); */
+  }
+  
+  .icon_container:hover .skip_button {
+    transform: scale(1.2)
+  }

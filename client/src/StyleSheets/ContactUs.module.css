@@ -1,0 +1,119 @@
+.chat_button {
+    position: fixed; /* relative to broswer window */
+    bottom: 3%;
+    right: 10px;
+}
+
+.chat_icon {
+    height: 50px;
+    width: 50px;
+    filter: drop-shadow(3px 5px 8px #242424);
+}
+
+.chat_button:hover {
+    transform: scale(1.05);
+}
+
+.fade_background {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.627);
+    /* border: 2px solid red; */
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    animation: fade-in 1s;
+    animation-fill-mode: forwards;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes fade-in {
+    0% {
+        background-color: rgba(0, 0, 0, 0);
+    }
+    100% {
+        background-color: rgba(0, 0, 0, 0.627);
+    }
+}
+
+.chat_panel {
+    width: 700px;
+    height: 450px;
+    background-color: var(--tertiary);
+    margin-top: 2rem;
+    border-radius: 50px;
+}
+
+.chat_panel h1 {
+    margin-bottom: .2rem;
+    color: var(--white-2);
+}
+
+.chat_panel p {
+    width: 70%;
+    margin: auto;
+    margin-top: 0;
+    color: var(--white-3);
+    margin-bottom: 1.3rem;
+}
+
+.subject_input {
+    background-color: var(--dark-grey) !important;
+    width: 80%;
+}
+
+.body_container {
+    margin-bottom: 0rem;
+}
+
+.body_input {
+    background-color: var(--dark-grey) !important;
+    width: 80%;
+    height: 140px;
+}
+
+.tag_button_container {
+    margin-top: .7rem;
+    margin-bottom: 0rem;
+}
+
+.tag_button {
+    background-color: var(--site-background) !important;
+    color: grey;
+    margin: .5rem;
+    margin-top: .1rem;
+    padding: .5rem;
+}
+
+.chat_submit_button {
+    font-size: .95rem;
+    padding: .5rem;
+    margin-top: .2rem;
+}
+
+.chat_submit_button:hover {
+    background-color: var(--success);
+}
+
+.selected {
+    color: black;
+    background-color: var(--secondary) !important;
+}
+
+.chat_icon_nametag {
+    position: relative;
+    margin: auto;
+    width: 120px;
+    margin-top: 5px;
+    color: var(--secondary);
+    font-weight: 900;
+    outline: 2px solid var(--secondary);
+    border-radius: 10px;
+    background-color: white;
+    cursor: pointer;
+
+}
