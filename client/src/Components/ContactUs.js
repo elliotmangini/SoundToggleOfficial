@@ -23,7 +23,7 @@ export default function ContactUs({ user }) {
     formData.append('tag_name', selectedTag);
 
     // Send a POST request to the endpoint (modify the URL accordingly)
-    fetch('/tickets', {
+    fetch('api/tickets', {
       method: 'POST',
       body: formData,
     })

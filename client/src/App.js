@@ -35,8 +35,9 @@ export default function App() {
     }
   });
 
+
   function getOwnInfo() {
-    fetch("/me")
+    fetch('api/me')
       .then((r) => {
         if (r.ok) {
           return r.json();
@@ -57,7 +58,7 @@ export default function App() {
     console.log(
       `Fetching playlist endpoint: /playlists/${username}/${playlistUrl}`
     );
-    fetch(`/playlists/${username}/${playlistUrl}`)
+    fetch(`api/playlists/${username}/${playlistUrl}`)
       .then((resp) => {
         if (resp.ok) {
           return resp.json();

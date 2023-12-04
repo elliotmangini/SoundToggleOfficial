@@ -11,7 +11,7 @@ export default function TicketDashboard() {
 
     const fetchNewsletterEmails = async () => {
         try {
-        const response = await fetch('/newsletter');
+        const response = await fetch('api/newsletter');
         if (response.ok) {
             const data = await response.text();
             setNewsletterEmails(data);

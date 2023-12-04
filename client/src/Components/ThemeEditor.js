@@ -39,7 +39,7 @@ export default function ThemeEditor({ user, playlist, setPlaylistToDisplay, prev
   }, [previewedTheme, initialTheme]);
 
   useEffect(() => {
-    fetch("/free_themes")
+    fetch("api/free_themes")
       .then((response) => response.json())
       .then((data) => {
         setFreeThemes(data);
@@ -92,7 +92,7 @@ export default function ThemeEditor({ user, playlist, setPlaylistToDisplay, prev
     });
 
     setIsEditSpinner(true);
-    fetch("/themes", {
+    fetch("api/themes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

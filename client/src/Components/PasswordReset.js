@@ -15,7 +15,7 @@ export default function PasswordReset() {
     // Add logic to handle form submission (e.g., sending email for password reset)
     console.log('Email submitted:', email);
     // Simulate POST request to password resets endpoint
-    fetch('/password_resets', {
+    fetch('api/password_resets', {
       method: 'POST',
       body: JSON.stringify({ email }),
       headers: {

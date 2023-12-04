@@ -13,7 +13,7 @@ export default function ArtworkUpload ({ setIsPopup, user, setUser, song, select
         const artwork = new FormData()
         artwork.append('artwork', selectedFile)
 
-        fetch(`/songs/${song.id}/artwork`, {
+        fetch(`api/songs/${song.id}/artwork`, {
             method: 'post',
             body: artwork,
           }).then((r) => {

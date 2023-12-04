@@ -18,7 +18,7 @@ export default function AudioUpload({ user, setUser, identification, song }) {
       const formData = new FormData();
       formData.append(identification === "Before" ? "before" : "after", selectedFile);
   
-      fetch(`/songs/${song.id}/${identification.toLowerCase()}`, {
+      fetch(`api/songs/${song.id}/${identification.toLowerCase()}`, {
         method: "post",
         body: formData,
       })

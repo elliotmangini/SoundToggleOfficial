@@ -30,7 +30,7 @@ export default function SongUpload({ user, playlist, fetchPlaylist, getOwnInfo }
     songData.append('secondary_attribute', formData.secondary_attribute);
     songData.append('playlist_id', playlist.id)
   
-    fetch('/songs', {
+    fetch('api/songs', {
       method: 'POST',
       body: songData,
     })

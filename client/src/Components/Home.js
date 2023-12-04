@@ -13,7 +13,7 @@ export default function Home() {
 
     useEffect(() => {
       // Fetch the most recent version when the component mounts
-      fetch("/current_version")
+      fetch("api/current_version")
         .then((response) => response.json())
         .then((data) => {
           setLatestVersion(data);

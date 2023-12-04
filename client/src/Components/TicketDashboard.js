@@ -16,7 +16,7 @@ export default function TicketDashboard() {
 
   const fetchTickets = async () => {
     try {
-      const response = await fetch('/tickets');
+      const response = await fetch('api/tickets');
       if (response.ok) {
         const data = await response.json();
         setTickets(data);
@@ -66,7 +66,7 @@ export default function TicketDashboard() {
     const isResolved = !selectedTicket.is_resolved;
   
     try {
-      const response = await fetch(`/tickets/${ticketId}`, {
+      const response = await fetch(`api/tickets/${ticketId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

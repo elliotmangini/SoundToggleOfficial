@@ -320,7 +320,7 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
       setIsEditSpinner(true);
       // Send a DELETE request to your backend to remove the song with the given songId.
       // You'll need to implement the DELETE request in your API.
-      fetch(`/songs/${songId}`, {
+      fetch(`api/songs/${songId}`, {
         method: 'DELETE',
         headers: {},
       })
@@ -383,7 +383,7 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
       };
   
       // Make a PATCH or PUT request to update the song
-      fetch(`/songs/${song.id}`, {
+      fetch(`api/songs/${song.id}`, {
         method: 'PATCH', // or 'PUT'
         headers: {
           'Content-Type': 'application/json',
