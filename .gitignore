@@ -13,4 +13,4 @@ tmp/
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
 
-/client/.env
+client/.env
