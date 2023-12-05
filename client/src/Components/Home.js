@@ -53,14 +53,14 @@ export default function Home() {
         <p style={{ fontStyle: "italic"}}>Sincerly,<br/>- Matt Ebso & Elliot Mangini</p>
       </section>
 
-      <section className={style.version_section}>
+      {/* <section className={style.version_section}>
         <h1>Latest Version Notes</h1>
         <div className={style.version_details}>
           <h3>{latestVersion?.name}</h3>
           <p>{formatTextWithLineBreaks(latestVersion?.notes)}</p>
           <h4>{latestVersion?.release}</h4>
         </div>
-      </section>
+      </section> */}
 
       <section>
         <h2>About Us</h2>

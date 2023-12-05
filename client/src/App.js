@@ -17,6 +17,7 @@ import Home from "./Components/Home";
 import Setup from "./Components/Setup";
 import Pricing from "./Components/Pricing";
 import PasswordReset from "./Components/PasswordReset";
+import Waitlist from "./Components/Waitlist";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -170,8 +171,17 @@ export default function App() {
             />
           }
         />
+
+        <Route
+        path="waitlist"
+        element={
+          <Waitlist
+          />
+        }
+        />
       </Routes>
-      {(user && user?.power !== "admin") && (!location.pathname.endsWith("/export")) ? <ContactUs /> : null}
+      {/* turn me back on later */}
+      {/* {(user && user?.power !== "admin") && (!location.pathname.endsWith("/export")) ? <ContactUs /> : null} */}
     </>
   );
 }
