@@ -35,11 +35,34 @@ export default function Waitlist ({}) {
         };
     }, []);
 
+    const mcAPIkey = process.env.REACT_APP_MC_API_KEY;
+
     function handleSubmit (e) {
         e.preventDefault();
         console.log(FNAME, LNAME, EMAIL, PHONE);
-    }
 
+        fetch("https://us21.api.mailchimp.com/3.0/lists/aa4ff9933d/members",{
+            method: 'POST',
+            body: JSON.stringify({
+                "email_address": EMAIL,
+                "status": "subscribed",
+                "merge_fields": {
+                    "FNAME": FNAME,
+                    "LNAME": LNAME,
+                }
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        .then((r) => {
+            if (r.ok) {
+                alert("success");
+            } else {
+                alert("error");
+            }
+        })
+    }
 
 
     return (

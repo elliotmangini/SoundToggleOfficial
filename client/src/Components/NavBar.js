@@ -8,15 +8,13 @@ import Avatar from '../Assets/placeholder-avatar.png';
 
 export default function NavBar ({ user }) {
 
-    console.log(user);
-
     return (
         <>
 
             <div id={style.nav_container}>
-                <Link to="/waitlist" className={style.nav_items}><img className={style.site_logo} src={siteLogo} alt="SoundToggle Logo"></img></Link>
+                <Link to="/" className={style.nav_items}><img className={style.site_logo} src={siteLogo} alt="SoundToggle Logo"></img></Link>
                 <div className={style.links_container}>
-                    <Link to="/waitlist" className={style.nav_link}>Home</Link>
+                    <Link to="/home" className={style.nav_link}>Home</Link>
                     {/* <Link to="/setup" className={style.nav_link}>Setup</Link>
                     <Link to="/pricing" className={style.nav_link}>Pricing</Link> */}
                     {user?.power === 'admin' ? (
@@ -25,9 +23,7 @@ export default function NavBar ({ user }) {
                     </>
                     ) : <div></div>}
                 </div>
-                {/* <Link to={ user ? user.username : "/login"} className={style.user_icon} style={{ textDecoration: 'none' }}><img src={user?.avatar_url ? user.avatar_url : Avatar}></img><span>{!user ? "Log in" : null}</span></Link> */}
-                <Link to={"/waitlist"} className={style.user_icon} style={{ textDecoration: 'none' }}><img src={user?.avatar_url ? user.avatar_url : Avatar}></img><span>{user ? null : null}</span></Link>
-
+                <Link to={ user ? user.username : "/login"} className={style.user_icon} style={{ textDecoration: 'none' }}><img src={user?.avatar_url ? user.avatar_url : Avatar}></img><span>{!user ? "Log in" : null}</span></Link>
             </div>
         </>
     )
