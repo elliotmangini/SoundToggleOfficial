@@ -10,7 +10,6 @@ class SessionsController < ApplicationController
         session[:user_id] = user.id
         puts 'session[:user_id]:'
         puts session[:user_id]
-        session.save
         render json: user, include: ['songs.before', 'songs.after']
       else
         render json: { errors: ["Invalid username or password"] }, status: :unauthorized
