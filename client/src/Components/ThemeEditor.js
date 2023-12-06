@@ -56,7 +56,7 @@ export default function ThemeEditor({ user, playlist, setPlaylistToDisplay, prev
   }, [previewedTheme]);
 
   const handleThemeChange = (newTheme) => {
-    const selectedTheme = freeThemes.find((theme) => theme.name === newTheme);
+    const selectedTheme = freeThemes?.find((theme) => theme.name === newTheme);
     if (selectedTheme) {
       setPreviewedTheme({
         primary_color: selectedTheme.primary_color,
