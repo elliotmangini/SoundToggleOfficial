@@ -6,7 +6,10 @@ class ApplicationController < ActionController::API
     private
   
     def authorize
+      puts 'session:'
       puts session
+      puts 'session user id'
+      puts session[:user_id]
       @current_user = User.find_by(id: session[:user_id])
       render json: { errors: ["Not authorized in app controller, boi"] }, status: :unauthorized unless @current_user
     end
