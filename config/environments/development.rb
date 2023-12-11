@@ -68,7 +68,7 @@ Rails.application.configure do
 end
 
 Rails.application.routes.default_url_options = {
-  host: 'http://localhost:3000'
+  host: 'http://localhost:3000/api'
 }
 
   # config.action_mailer.asset_host = "http://localhost:3000"
