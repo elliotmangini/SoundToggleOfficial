@@ -17,3 +17,5 @@ client/.env
 
 config/database.yml
 /config/master.key
+
+/config/
