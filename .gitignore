@@ -22,3 +22,6 @@ config/database.yml
 
 db/seeds.rb
 db/oldseeds.rb
+
+client/package.json
+client/package-lock.json
