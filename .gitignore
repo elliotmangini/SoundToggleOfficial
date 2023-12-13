@@ -20,5 +20,5 @@ config/database.yml
 
 /config/
 
-/db/seeds.rb
-/db/oldseeds.rb
+db/seeds.rb
+db/oldseeds.rb
