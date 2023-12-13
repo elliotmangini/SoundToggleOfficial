@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Use useNavigate
 
+import apiUrl from '../apiConfig.js';
+
+
 export default function PasswordReset() {
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
@@ -15,7 +18,7 @@ export default function PasswordReset() {
     // Add logic to handle form submission (e.g., sending email for password reset)
     console.log('Email submitted:', email);
     // Simulate POST request to password resets endpoint
-    fetch('api/password_resets', {
+    fetch(`${apiUrl}/password_resets`, {
       method: 'POST',
       body: JSON.stringify({ email }),
       headers: {

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import FileUploader from './FileUploader';
 
+import apiUrl from '../apiConfig.js';
 
 
 export default function AudioUpload({ user, setUser, identification, song }) {
@@ -18,7 +19,7 @@ export default function AudioUpload({ user, setUser, identification, song }) {
       const formData = new FormData();
       formData.append(identification === "Before" ? "before" : "after", selectedFile);
   
-      fetch(`api/songs/${song.id}/${identification.toLowerCase()}`, {
+      fetch(`${apiUrl}/songs/${song.id}/${identification.toLowerCase()}`, {
         method: "post",
         body: formData,
       })

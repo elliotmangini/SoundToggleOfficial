@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import FileUploader from './FileUploader';
 
+import apiUrl from '../apiConfig';
+
 
 
 export default function AvatarUpload ({ user, setUser }) {
@@ -13,7 +15,7 @@ export default function AvatarUpload ({ user, setUser }) {
         const avatar = new FormData()
         avatar.append('avatar', selectedFile)
 
-        fetch("api/avatar", {
+        fetch(`${apiUrl}/avatar`, {
             method: 'post',
             body: avatar,
         }).then((r) => {

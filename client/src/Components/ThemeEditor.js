@@ -3,6 +3,8 @@ import _isEqual from 'lodash/isEqual';
 import _difference from "lodash/difference";
 import style from "../StyleSheets/ThemeEditor.module.css";
 
+import apiUrl from "../apiConfig";
+
 export default function ThemeEditor({ user, playlist, setPlaylistToDisplay, previewedTheme, setPreviewedTheme, setIsEditSpinner }) {
   const [freeThemes, setFreeThemes] = useState(null);
   const [initialTheme , setInitialTheme] = useState(playlist.theme);
@@ -39,7 +41,7 @@ export default function ThemeEditor({ user, playlist, setPlaylistToDisplay, prev
   }, [previewedTheme, initialTheme]);
 
   useEffect(() => {
-    fetch("api/free_themes")
+    fetch(`${apiUrl}/free_themes`)
       .then((response) => response.json())
       .then((data) => {
         setFreeThemes(data);
@@ -92,7 +94,7 @@ export default function ThemeEditor({ user, playlist, setPlaylistToDisplay, prev
     });
 
     setIsEditSpinner(true);
-    fetch("api/themes", {
+    fetch(`${apiUrl}/themes`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

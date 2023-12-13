@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import style from '../StyleSheets/ContactUs.module.css';
 import ChatIcon from '../Assets/chat-icon.png';
 
+import apiUrl from '../apiConfig';
+
 export default function ContactUs({ user }) {
   const [isChat, setIsChat] = useState(false);
   const [subject, setSubject] = useState('');
@@ -23,7 +25,7 @@ export default function ContactUs({ user }) {
     formData.append('tag_name', selectedTag);
 
     // Send a POST request to the endpoint (modify the URL accordingly)
-    fetch('api/tickets', {
+    fetch(`${apiUrl}/tickets`, {
       method: 'POST',
       body: formData,
     })

@@ -13,6 +13,8 @@ import FacebookIcon from "./FacebookIcon";
 import SoundcloudIcon from "./SoundcloudIcon";
 import UnknownLink from "./UnknownLink";
 
+import apiUrl from "../apiConfig";
+
 export default function UserProfile({
   isEditing,
   setIsEditing,
@@ -40,7 +42,7 @@ export default function UserProfile({
   
 
   function handleLogout() {
-    fetch("api/logout", { method: "DELETE" })
+    fetch(`${apiUrl}/logout`, { method: "DELETE" })
       .then((r) => {
         if (r.ok) {
           setUser(null);
@@ -90,7 +92,7 @@ export default function UserProfile({
   function handleUserEdit() {
     if (isUpdatingUser) {
       console.log("user edit ASKDFJKASJDLFKJALKSDFJ")
-      fetch("api/users/bio", {
+      fetch(`${apiUrl}/users/bio`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

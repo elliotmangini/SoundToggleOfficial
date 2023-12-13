@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
+import apiUrl from '../apiConfig.js';
+
 import style from '../StyleSheets/SignUp.module.css';
 
 export default function SignUp({ user, setUser }) {
@@ -16,16 +18,11 @@ export default function SignUp({ user, setUser }) {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  // Update the selected tag when the component mounts
-  // useEffect(() => {
-  //   setSelectedTag(null);
-  // }, []);
-
   function handleSubmit(e) {
     e.preventDefault();
     setErrors([]);
     setIsLoading(true);
-    fetch("api/signup", {
+    fetch(`${apiUrl}/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 
 import style from '../StyleSheets/AddSong.module.css';
 
+import apiUrl from '../apiConfig';
+
 export default function SongUpload({ user, playlist, fetchPlaylist, getOwnInfo }) {
   // const { urlUsername } = useParams();
   const { urlPlaylist } = useParams();
@@ -30,7 +32,7 @@ export default function SongUpload({ user, playlist, fetchPlaylist, getOwnInfo }
     songData.append('secondary_attribute', formData.secondary_attribute);
     songData.append('playlist_id', playlist.id)
   
-    fetch('api/songs', {
+    fetch(`${apiUrl}/songs`, {
       method: 'POST',
       body: songData,
     })

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import apiUrl from '../apiConfig.js';
+
 
 export default function TicketDashboard() {
     const [ newsletterEmails , setNewsletterEmails ] = useState(null);
@@ -11,7 +13,7 @@ export default function TicketDashboard() {
 
     const fetchNewsletterEmails = async () => {
         try {
-        const response = await fetch('api/newsletter');
+        const response = await fetch(`${apiUrl}/newsletter`);
         if (response.ok) {
             const data = await response.text();
             setNewsletterEmails(data);

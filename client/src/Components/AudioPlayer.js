@@ -22,6 +22,8 @@ import SkipButtonIcon from './SkipButtonIcon.js';
 import ShareButtonIcon from './ShareButtonIcon.js';
 import TrashButtonIcon from "./TrashButtonIcon.js";
 
+import apiUrl from "../apiConfig.js";
+
 
 
 export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setUser, fetchPlaylist, isEditing, setIsEditing }) {
@@ -320,7 +322,7 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
       setIsEditSpinner(true);
       // Send a DELETE request to your backend to remove the song with the given songId.
       // You'll need to implement the DELETE request in your API.
-      fetch(`api/songs/${songId}`, {
+      fetch(`${apiUrl}/songs/${songId}`, {
         method: 'DELETE',
         headers: {},
       })
@@ -383,7 +385,7 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
       };
   
       // Make a PATCH or PUT request to update the song
-      fetch(`api/songs/${song.id}`, {
+      fetch(`${apiUrl}/songs/${song.id}`, {
         method: 'PATCH', // or 'PUT'
         headers: {
           'Content-Type': 'application/json',

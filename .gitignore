@@ -19,3 +19,6 @@ config/database.yml
 /config/master.key
 
 /config/
+
+/db/seeds.rb
+/db/oldseeds.rb

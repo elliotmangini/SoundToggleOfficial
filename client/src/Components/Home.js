@@ -5,6 +5,8 @@ import Matt from "../Assets/matt_pfp.png";
 import Elliot from "../Assets/elliot_pfp.png";
 import { useState, useEffect } from 'react';
 
+import apiUrl from '../apiConfig.js';
+
 
 export default function Home() {
     const [latestVersion, setLatestVersion] = useState(null);
@@ -13,7 +15,7 @@ export default function Home() {
 
     useEffect(() => {
       // Fetch the most recent version when the component mounts
-      fetch("api/current_version")
+      fetch(`${apiUrl}/current_version`)
         .then((response) => response.json())
         .then((data) => {
           setLatestVersion(data);

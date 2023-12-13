@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 
 import style from '../StyleSheets/Login.module.css';
 
+import apiUrl from "../apiConfig";
+
 export default function Login({ user, setUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -14,7 +16,7 @@ export default function Login({ user, setUser }) {
   function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
-    fetch('api/login', {
+    fetch(`${apiUrl}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

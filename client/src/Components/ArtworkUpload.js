@@ -2,6 +2,8 @@ import { useState } from 'react';
 import FileUploader from './FileUploader';
 import style from '../StyleSheets/ArtworkUpload.module.css';
 
+import apiUrl from '../apiConfig';
+
 
 
 export default function ArtworkUpload ({ setIsPopup, user, setUser, song, selectedFile, setSelectedFile }) {
@@ -13,7 +15,7 @@ export default function ArtworkUpload ({ setIsPopup, user, setUser, song, select
         const artwork = new FormData()
         artwork.append('artwork', selectedFile)
 
-        fetch(`api/songs/${song.id}/artwork`, {
+        fetch(`${apiUrl}/songs/${song.id}/artwork`, {
             method: 'post',
             body: artwork,
           }).then((r) => {

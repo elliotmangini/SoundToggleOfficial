@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import style from '../StyleSheets/TicketDashboard.module.css';
 
+import apiUrl from '../apiConfig';
+
 export default function TicketDashboard() {
   // Define state variables to store ticket data, selected ticket, search/filter values, and the "Open" filter state.
   const [tickets, setTickets] = useState([]);
@@ -16,7 +18,7 @@ export default function TicketDashboard() {
 
   const fetchTickets = async () => {
     try {
-      const response = await fetch('api/tickets');
+      const response = await fetch(`${apiUrl}/tickets`);
       if (response.ok) {
         const data = await response.json();
         setTickets(data);
@@ -66,7 +68,7 @@ export default function TicketDashboard() {
     const isResolved = !selectedTicket.is_resolved;
   
     try {
-      const response = await fetch(`api/tickets/${ticketId}`, {
+      const response = await fetch(`${apiUrl}/tickets/${ticketId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

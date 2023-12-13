@@ -19,6 +19,8 @@ import Pricing from "./Components/Pricing";
 import PasswordReset from "./Components/PasswordReset";
 import Waitlist from "./Components/Waitlist";
 
+import apiUrl from './apiConfig.js';
+
 export default function App() {
   const [user, setUser] = useState(null);
   const [playlistToDisplay, setPlaylistToDisplay] = useState(null);
@@ -38,7 +40,7 @@ export default function App() {
 
 
   function getOwnInfo() {
-    fetch('api/me')
+    fetch(`${apiUrl}/me`)
       .then((r) => {
         if (r.ok) {
           return r.json();
@@ -59,7 +61,7 @@ export default function App() {
     console.log(
       `Fetching playlist endpoint: /playlists/${username}/${playlistUrl}`
     );
-    fetch(`api/playlists/${username}/${playlistUrl}`)
+    fetch(`${apiUrl}/playlists/${username}/${playlistUrl}`)
       .then((resp) => {
         if (resp.ok) {
           return resp.json();
