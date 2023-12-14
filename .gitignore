@@ -25,3 +25,6 @@ db/oldseeds.rb
 
 client/package.json
 client/package-lock.json
+
+Gemfile
+Gemfile.lock
