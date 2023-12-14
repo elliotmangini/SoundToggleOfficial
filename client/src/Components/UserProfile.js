@@ -164,11 +164,11 @@ export default function UserProfile({
                 className={style.progress_bar_fill}
                 style={{ 
                   backgroundColor: playlistToDisplay?.theme.primary_color,
-                  width: `${(user?.space_used / 200) * 100}%`
+                  width: `${(user?.space_used / 1000) * 100}%`
                 }}
               ></div>
             </div>
-            <span style={{ color: playlistToDisplay?.theme.text_secondary_color}}>{user?.space_used}MB / 200MB</span>
+            <span style={{ color: playlistToDisplay?.theme.text_secondary_color}}>{user?.space_used}MB / 1GB</span>
           </div>
         </>
       )}
