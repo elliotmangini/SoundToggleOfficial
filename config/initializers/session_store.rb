@@ -1,0 +1,1 @@
+Rails.application.config.session_store :cookie_store, key: '_your_app_session', secure: false, domain: 'soundtoggle.io', same_site: :none
