@@ -350,7 +350,7 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
   
 
   const handleExport = () => {
-    const iframeCode = `<iframe src="https:soundtoggle.io/${playlist.user.username}/${convertToKebabCase(playlist.name)}/export" width="100%" height="800px" frameborder="0"></iframe>`;
+    const iframeCode = `<iframe src="https://soundtoggle.io/${playlist.user.username}/${convertToKebabCase(playlist.name)}/export" width="100%" height="800px" frameborder="0"></iframe>`;
     navigator.clipboard.writeText(iframeCode).then(() => {
       alert("Iframe code block copied to clipboard! At the moment, you may need to do a wee bit of tweaking to the height and width, soon we will set these up to be exactly right for you! :)");
     });
