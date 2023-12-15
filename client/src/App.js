@@ -183,7 +183,7 @@ export default function App() {
         />
       </Routes>
       {/* turn me back on later */}
-      {/* {(user && user?.power !== "admin") && (!location.pathname.endsWith("/export")) ? <ContactUs /> : null} */}
+      {(user && user?.power !== "admin") && (!location.pathname.endsWith("/export")) ? <ContactUs /> : null}
     </>
   );
 }
