@@ -729,7 +729,7 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
                             className={style.upload_thumbnail}
                             src={(selectedFile ? uploadIcon : null) || song.artwork_url || defaultArtwork}
                           ></img>
-                          <ArtworkUpload playlist={playlist} setPlaylistToDisplay={setPlaylistToDisplay} setIsPopup={setIsPopup} selectedFile={selectedFile} setSelectedFile={setSelectedFile} setUser={setUser} song={song} />
+                          <ArtworkUpload setIsEditSpinner={setIsEditSpinner} playlist={playlist} setPlaylistToDisplay={setPlaylistToDisplay} setIsPopup={setIsPopup} selectedFile={selectedFile} setSelectedFile={setSelectedFile} setUser={setUser} song={song} />
                         </div>
                             </>
                           )}
