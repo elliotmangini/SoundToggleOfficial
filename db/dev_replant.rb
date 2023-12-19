@@ -1,10 +1,5 @@
 # Version > Tags > Themes > Users [Avatar Attach]> Links > Playlists > Songs [Artwork Attach] > Befores & Afters [Audio Attach] > playlist.save creates playlist urls
 
-ActiveRecord::Base.connection.tables.each do |table|
-  ActiveRecord::Base.connection.execute("TRUNCATE #{table} RESTART IDENTITY CASCADE;")
-end
-
-
 assets_path = '/Users/thelightdisk/Development/code/SoundToggle/app/assets'
 
 puts 'Begin seeding versions'
