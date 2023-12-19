@@ -41,8 +41,10 @@ class SongsController < ApplicationController
     end
   
     @song.update_attribute(:artwork, params[:artwork])
-    render json: @current_user, status: :accepted
-  end  
+
+    artwork_url = @song.artwork_url
+    render json: { artwork_url: artwork_url }, status: :accepted
+  end
 
   def set_before
     @song = Song.find(params[:id])

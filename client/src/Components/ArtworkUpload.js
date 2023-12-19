@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import FileUploader from './FileUploader';
 import style from '../StyleSheets/ArtworkUpload.module.css';
 
@@ -6,11 +6,13 @@ import apiUrl from '../apiConfig';
 
 
 
-export default function ArtworkUpload ({ setIsPopup, user, setUser, song, selectedFile, setSelectedFile }) {
+export default function ArtworkUpload ({ playlist, setPlaylistToDisplay, setIsPopup, user, setUser, song, selectedFile, setSelectedFile }) {
     const [ errors, setErrors ] = useState([]);
 
     function submitForm (e) {
-        e.preventDefault();
+        if (e) {
+          e.preventDefault();
+        }
 
         const artwork = new FormData()
         artwork.append('artwork', selectedFile)
@@ -20,16 +22,32 @@ export default function ArtworkUpload ({ setIsPopup, user, setUser, song, select
             body: artwork,
           }).then((r) => {
             if (r.ok) {
-              r.json().then((user) => setIsPopup(false));
+              r.json().then((resp) => {
+                setSelectedFile(null);
+                setIsPopup(false);
+                console.log(resp);
+                // TODO: set the front end song artwork to this!
+                setPlaylistToDisplay(prevPlaylist => ({
+                  ...prevPlaylist,
+                  songs: prevPlaylist.songs.map(prevSong =>
+                    prevSong.id === song.id ? { ...prevSong, artwork_url: resp.artwork_url } : prevSong
+                  )
+                }));
+              });
             } else {
               r.json().then((err) => {
                 setErrors(err.errors);
                 console.log(errors);
               })
             }
-          });
-          
+          });    
     }
+
+    useEffect(() => {
+      if (selectedFile) {
+        submitForm();
+      }
+    },[selectedFile]);
 
 
     return (

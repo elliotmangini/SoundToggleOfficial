@@ -34,6 +34,8 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
   const [isEditSpinner, setIsEditSpinner] = useState(false);
   const [visibleSpinner, setVisibleSpinner] = useState(null); // this never needs to be set manually
 
+  console.log(playlist);
+
   useEffect(() => {
     if (isEditSpinner) {
       const invisibleSpinnerDuration = 500; // Half a second
@@ -61,7 +63,6 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
   }, [isEditSpinner]);
 
   const [isEditPencil, setIsEditPencil] = useState(false);
-  const [isAdjustingTheme, setIsAdjustingTheme] = useState(false);
 
   const [titleInput, setTitleInput] = useState("");
   const [primaryAttrInput, setPrimaryAttrInput] = useState("");
@@ -98,10 +99,9 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
     secondary_attribute_name: playlist?.theme?.secondary_attribute_name,
   });
 
-  // Fetch playlist if it's not available but username and playlist url are in the URL params
+  // Trigger fetch of playlist only in the instance we are viewing another user's page
   useEffect(() => {
     if (!playlist && urlUsername && urlPlaylist) {
-      console.log("HERE");
       console.log(playlist);
       console.log(urlPlaylist);
       console.log(urlUsername);
@@ -117,6 +117,7 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
 
 
   useEffect(() => {
+    // I think this is like "automatically update HTML audio elements when our playlist updates?"
     if (playlist && Object.keys(playlist).length > 0) {
       if (playlist.songs?.length === 0 && playlist.user?.username === user?.username) {
         setIsEditing(true);
@@ -182,11 +183,6 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
   };
 
 
-
-
-
-  
-  const location = useLocation();
 
   // stop playing audio whenever we switch to a different URL
   useEffect(() => {
@@ -415,17 +411,6 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
       setIsEditPencil(false);
     }
   };
-
-  // function handleIsAdjustingTheme () {
-  //   if (!isAdjustingTheme) {
-  //     setIsAdjustingTheme(!isAdjustingTheme);
-  //   } else {
-  //     // FETCH THE CHANGES TO THE THEME HERE?
-      
-  //     setIsAdjustingTheme(!isAdjustingTheme);
-  //   }
-  // }
-  
   
 
   return (
@@ -673,12 +658,13 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
                     // style={{ backgroundColor: `${playlist?.theme.background_color}` }}
                     style={{ background: `linear-gradient(to bottom, ${previewedTheme.background_color}, ${previewedTheme.tertiary_color})` }}
                     >
-                    {/* <div className={style.song_buttons}>
-                      <button className={style.delete_button} onClick={() => deleteSong(song.id)}>Delete</button>
-                    </div> */}
                       <div className={style.upload_statuses}>
+
+                        {/* ARTWORK EDIT BUTTON */}
                         <button 
-                          onClick={() => setIsPopup([song.id, "Artwork"])}
+                          onClick={() => {
+                            setIsPopup([song.id, "Artwork"])
+                          }}
                           className={style.artwork_upload_trigger}
                         >
                           <img
@@ -686,6 +672,8 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
                             src={song.artwork_url || defaultArtwork}
                           ></img>
                         </button>
+
+                        {/* BEFORE EDIT BUTTON */}
                         <button
                           onClick={() => setIsPopup([song.id, "Slot One"])}
                           className={`${style.status_indicator} ${
@@ -694,7 +682,6 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
                               : style.file_missing
                           }`}
                         >
-                          {/* <span>Slot One:</span><br/> */}
                           {song.before.audio_filename
                             ? 
                               <>
@@ -702,6 +689,8 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
                               </>
                             : ""}
                         </button>
+                        
+                        {/* AFTER EDIT BUTTON */}
                         <button
                           onClick={() => setIsPopup([song.id, "Slot Two"])}
                           className={`${style.status_indicator} ${
@@ -710,7 +699,6 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
                               : style.file_missing
                           }`}
                         >
-                          {/* <span>Slot Two:</span><br/> */}
                           {song.after.audio_filename
                             ?
                             <>
@@ -718,8 +706,11 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
                             </>
                             : ""}
                         </button>
+
                       </div>
 
+
+                      {/* UPLOAD POPUPS */}
                       { isPopup[0] === song.id && (
                       <div className={style.popup_fullscreen}>
                         <div 
@@ -729,6 +720,8 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
                             className={style.exit_popup_button}
                             onClick={() => setIsPopup([])}
                           ></button>
+
+
                           { isPopup[1] === "Artwork" && (
                             <>
                         <div className={style.uploader_single}>
@@ -736,10 +729,12 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
                             className={style.upload_thumbnail}
                             src={(selectedFile ? uploadIcon : null) || song.artwork_url || defaultArtwork}
                           ></img>
-                          <ArtworkUpload setIsPopup={setIsPopup} selectedFile={selectedFile} setSelectedFile={setSelectedFile} setUser={setUser} song={song} />
+                          <ArtworkUpload playlist={playlist} setPlaylistToDisplay={setPlaylistToDisplay} setIsPopup={setIsPopup} selectedFile={selectedFile} setSelectedFile={setSelectedFile} setUser={setUser} song={song} />
                         </div>
                             </>
                           )}
+
+
                           { isPopup[1] === "Slot One" && (
                             <>
                               <div className={style.uploader_single}>
@@ -751,6 +746,8 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
                               </div>
                             </>
                           )}
+
+                          
                           { isPopup[1] === "Slot Two" && (
                             <>
                               <div className={style.uploader_single}>
