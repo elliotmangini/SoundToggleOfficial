@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import style from '../StyleSheets/FileUploader.module.css';
 
 export default function FileUploader({ maxSize, onFileSelectError, onFileSelectSuccess }) {
@@ -25,6 +25,10 @@ export default function FileUploader({ maxSize, onFileSelectError, onFileSelectS
     // Trigger the hidden file input
     fileInputRef.current.click();
   };
+
+  useEffect(() => {
+    handleButtonClick();
+  },[]);
 
   return (
     <div className={style.file_uploader}>
