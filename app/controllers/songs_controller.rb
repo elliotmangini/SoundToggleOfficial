@@ -56,7 +56,7 @@ class SongsController < ApplicationController
       before.audio.attach(params[:before]) # Attach the new audio file
     end
     @current_user.update_user_storage
-    render json: @current_user, status: :ok
+    render json: @song, status: :ok
   end
   
   def set_after
@@ -69,7 +69,7 @@ class SongsController < ApplicationController
       after.audio.attach(params[:after]) # Attach the new audio file
     end
     @current_user.update_user_storage
-    render json: @current_user, status: :ok
+    render json: @song, status: :ok
   end
   
 

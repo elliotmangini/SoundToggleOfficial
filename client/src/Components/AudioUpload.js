@@ -1,43 +1,62 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import FileUploader from './FileUploader';
+
+import style from '../StyleSheets/AudioUpload.module.css';
 
 import apiUrl from '../apiConfig.js';
 
 
-export default function AudioUpload({ setIsEditSpinner, setPlaylistToDisplay, user, setUser, identification, song }) {
+export default function AudioUpload({ setIsPopup, setIsEditSpinner, setPlaylistToDisplay, user, setUser, identification, song }) {
     const [selectedFile, setSelectedFile] = useState(null);
     const [errors, setErrors] = useState([]);
   
     function submitForm(e) {
-      e.preventDefault();
-  
-      if (!selectedFile) {
-        // Handle the case when no file is selected
-        return;
+      setIsEditSpinner(true);
+      if (e) {
+        e.preventDefault();
       }
-  
+    
       const formData = new FormData();
       formData.append(identification === "Before" ? "before" : "after", selectedFile);
-  
+    
       fetch(`${apiUrl}/songs/${song.id}/${identification.toLowerCase()}`, {
         method: "post",
         body: formData,
       })
         .then((r) => {
           if (r.ok) {
-            r.json().then((updatedSong) => {
-              // You may want to update the song in your state here
+            return r.json().then((resp) => {
+              setSelectedFile(null);
+              setIsPopup(false);
+              setPlaylistToDisplay((prevPlaylist) => ({
+                ...prevPlaylist,
+                songs: prevPlaylist.songs.map((prevSong) =>
+                prevSong.id === resp.id ? resp : prevSong
+              ),
+              }));
               console.log(`Successfully uploaded ${identification} audio for song ${song.id}`);
             });
           } else {
-            r.json().then((err) => setErrors(err.errors));
+            return r.json().then((err) => {
+              setErrors(err.errors);
+              console.log(errors);
+            });
           }
         })
         .catch((error) => {
           console.error(error);
           // Handle any network errors or unexpected issues here
+        })
+        .finally(() => {
+          setIsEditSpinner(false); // Turn off spinner regardless of fetch success or failure
         });
     }
+
+    useEffect(() => {
+      if (selectedFile) {
+        submitForm();
+      }
+    },[selectedFile]);
   
     return (
       <form>
@@ -46,7 +65,12 @@ export default function AudioUpload({ setIsEditSpinner, setPlaylistToDisplay, us
           onFileSelectSuccess={setSelectedFile}
           onFileSelectError={({ error }) => alert(error)}
         />
-        <button onClick={(e) => submitForm(e)}>{`Upload ${identification}`}</button>
+        <button 
+          className={selectedFile ? style.upload_button : style.hidden} 
+          onClick={(e) => submitForm(e)}
+        >
+          {`Upload ${identification}`}
+          </button>
       </form>
     );
   }

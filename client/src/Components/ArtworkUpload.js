@@ -67,7 +67,12 @@ export default function ArtworkUpload ({ setIsEditSpinner, playlist, setPlaylist
             onFileSelectSuccess={setSelectedFile}
             onFileSelectError={({ error }) => alert(error)}
             />
-            <button className={selectedFile ? style.upload_button : style.hidden} onClick={(e) => submitForm(e)}>{selectedFile ? "Upload" : "No File Selected"}</button>
+            <button 
+              className={selectedFile ? style.upload_button : style.hidden} 
+              onClick={(e) => submitForm(e)}
+            >
+              {selectedFile ? "Upload" : "No File Selected"}
+            </button>
         </form>
     )
 

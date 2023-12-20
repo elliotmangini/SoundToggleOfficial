@@ -34,8 +34,6 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
   const [isEditSpinner, setIsEditSpinner] = useState(false);
   const [visibleSpinner, setVisibleSpinner] = useState(null); // this never needs to be set manually
 
-  console.log(playlist);
-
   useEffect(() => {
     if (isEditSpinner) {
       const invisibleSpinnerDuration = 500; // Half a second
@@ -742,6 +740,7 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
                                   setIsEditSpinner={setIsEditSpinner}
                                   setPlaylistToDisplay={setPlaylistToDisplay}
                                   setUser={setUser}
+                                  setIsPopup={setIsPopup}
                                   song={song}
                                   identification="Before"
                                 />
@@ -754,7 +753,10 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
                             <>
                               <div className={style.uploader_single}>
                                 <AudioUpload
+                                  setIsEditSpinner={setIsEditSpinner}
+                                  setPlaylistToDisplay={setPlaylistToDisplay}
                                   setUser={setUser}
+                                  setIsPopup={setIsPopup}
                                   song={song}
                                   identification="After"
                                 />

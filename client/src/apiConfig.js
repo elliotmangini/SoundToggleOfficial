@@ -1,4 +1,5 @@
 // apiConfig.js
-const apiUrl = 'https://soundtoggle.io/api'; // Replace 'YOUR_BASE_URL_HERE' with your actual base URL
+// const apiUrl = 'https://soundtoggle.io/api';
+const apiUrl = '';
 
 export default apiUrl;
