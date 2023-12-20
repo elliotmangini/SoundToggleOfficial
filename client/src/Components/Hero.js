@@ -34,8 +34,9 @@ export default function Hero({ fetchPlaylist, playlistToDisplay, setPlaylistToDi
           <button onClick={() => handleGetYours()} className={style.get_yours_button}>GET YOURS</button>
         </div>
         <div className={style.right_half}>
-          {/* {playlistToDisplay && <AudioPlayer playlist={playlistToDisplay} />} */}
-          <AudioPlayer playlist={playlistToDisplay} />
+          <div className={style.inset_player}>
+            <AudioPlayer playlist={playlistToDisplay} />
+          </div>
         </div>
       </div>
 
