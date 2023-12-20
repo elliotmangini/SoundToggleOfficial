@@ -4,7 +4,7 @@
     margin: 0; /* Reset margin */
     padding: 0; /* Reset padding */
     justify-content: center; /* Horizontally center the content */
-    align-items: center;
+    /* align-items: center; */
 }
 
 .left_half {
@@ -15,6 +15,7 @@
     margin: 0;
     max-width: 500px;
     line-height: 3.5rem;
+    margin-top: 1rem;
 }
 
 .left_text {
