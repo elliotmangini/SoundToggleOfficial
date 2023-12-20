@@ -3,15 +3,12 @@
     align-items: flex-end;
     justify-content: space-between;
     height: fit-content;
-    padding: 1rem;
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-bottom: 0;
-    width: 100%;
-    max-width: 1100px;
+    padding: .2rem .6rem;
+    max-width: 100%;
+    max-width: 1300px;
     background-color: rgba(20, 20, 20, 1);
     margin: auto;
-    margin-top: 1rem;
+    margin-top: .5rem;
 }
 
 .site_logo {
@@ -39,7 +36,7 @@
 .nav_link {
     display: inline-block;
     text-align: center;
-    margin: 1rem;
+    margin: .5rem;
     max-width: 80px;
     text-decoration: none !important;
 }
@@ -53,7 +50,8 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-right: 2rem;
+    margin-right: .3rem;
+    margin-bottom: .5rem;
 }
 
 .user_icon img {

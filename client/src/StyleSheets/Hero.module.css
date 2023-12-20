@@ -27,10 +27,6 @@
     /* text-align: center; */
 }
 
-.left_text span {
-
-}
-
 .get_yours_button {
     width: 200px;
     height: 50px;
@@ -52,8 +48,9 @@
 
 .right_half {
     flex: 1; /* Allow the right-half to take 50% of the available space */
-    max-width: 550px;
-    padding-right: 1rem;
+    max-width: 600px;
+    /* padding-right: 1rem; */
+    margin: 20px 0px 0px 0px;
 }
 
 .middle_container {
@@ -112,4 +109,21 @@
 
 .get_started_button:hover {
     background-color: var(--success);
+}
+
+@media (max-width: 768px) {
+    .top_container {
+        flex-direction: column-reverse; /* Stack items vertically on smaller screens */
+    }
+
+    .left_half, .right_half {
+        flex: 1 1 100%; /* Take full width on smaller screens */
+        min-width: 100%; /* Minimum width for the left half on smaller screens */
+    }
+
+    .left_text {
+        text-align: center;
+        padding: 0;
+    }
+
 }
