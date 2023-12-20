@@ -4,7 +4,7 @@ import FileUploader from './FileUploader';
 import apiUrl from '../apiConfig.js';
 
 
-export default function AudioUpload({ user, setUser, identification, song }) {
+export default function AudioUpload({ setIsEditSpinner, setPlaylistToDisplay, user, setUser, identification, song }) {
     const [selectedFile, setSelectedFile] = useState(null);
     const [errors, setErrors] = useState([]);
   

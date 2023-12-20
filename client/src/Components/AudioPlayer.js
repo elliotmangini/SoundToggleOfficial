@@ -739,6 +739,8 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
                             <>
                               <div className={style.uploader_single}>
                                 <AudioUpload
+                                  setIsEditSpinner={setIsEditSpinner}
+                                  setPlaylistToDisplay={setPlaylistToDisplay}
                                   setUser={setUser}
                                   song={song}
                                   identification="Before"
