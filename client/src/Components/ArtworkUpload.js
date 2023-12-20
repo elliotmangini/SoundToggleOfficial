@@ -63,7 +63,7 @@ export default function ArtworkUpload ({ setIsEditSpinner, playlist, setPlaylist
     return (
         <form >
             <FileUploader
-            maxSize={6291456}
+            maxSize={5000000}
             onFileSelectSuccess={setSelectedFile}
             onFileSelectError={({ error }) => alert(error)}
             />

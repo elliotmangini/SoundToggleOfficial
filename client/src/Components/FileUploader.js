@@ -10,7 +10,7 @@ export default function FileUploader({ maxSize, onFileSelectError, onFileSelectS
     const file = e.target.files[0];
     if (file) {
       if (file.size > maxSize) {
-        onFileSelectError({ error: "File is too large." });
+        onFileSelectError({ error: `File exceeds maximum size of ${maxSize/1000000}MB.` });
       } else {
         setSelectedFile(file);
         onFileSelectSuccess(file);
