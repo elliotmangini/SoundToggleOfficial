@@ -26,10 +26,12 @@ export default function Hero({ fetchPlaylist, playlistToDisplay, setPlaylistToDi
       <div className={style.top_container}>
         <div className={style.left_half}>
           <h3 className={style.left_text}>
-            Finally...
-            <br />
-            <br />
-            <span>A before and after audio player for your website.</span>
+            <div className={style.finally}>Finally...</div>
+            <div className={style.cta_mask}>
+              <div className={style.cta}>
+                A <div className={style.before}>before</div> and <div className={style.after}>after</div> audio player <div className={style.for}>for</div> <div className={style.your}>your</div> <div className={style.website}>website</div>.
+              </div>
+            </div>
           </h3>
           <button onClick={() => handleGetYours()} className={style.get_yours_button}>GET YOURS</button>
         </div>
