@@ -23,7 +23,7 @@ export default function NavBar ({ user }) {
                     </>
                     ) : <div></div>}
                 </div>
-                <Link to={ user ? user.username : "/login"} className={style.user_icon} style={{ textDecoration: 'none' }}><img src={user?.avatar_url ? user.avatar_url : Avatar}></img><span>{!user ? "Log in" : null}</span></Link>
+                <Link to={ user ? user.username : "/login"} className={style.user_icon} style={{ textDecoration: 'none' }}><img src={user?.avatar_url ? user.avatar_url : Avatar}></img><span>{!user ? "" : null}</span></Link>
             </div>
         </>
     )

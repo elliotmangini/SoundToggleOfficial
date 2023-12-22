@@ -322,16 +322,19 @@
 }
 
 .middle_content {
-    max-width: 900px; /* Set the maximum width */
+    max-width: 1200px;
     display: flex;
-    justify-content: space-between; /* Adjust as needed */
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center; /* Vertically center the content */
     width: 100%;
 }
 
 .additional_blurb {
-    width: 400px;
+    width: 300px;
     padding: 20px 0px 20px 0px;
+    margin: auto;
+    margin: 0 40px;
 }
 
 .additional_blurb h2 {

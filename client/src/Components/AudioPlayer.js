@@ -484,7 +484,7 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
               min={0}
               max={duration}
               value={currentTime}
-              style={{ backgroundColor: "black"}}
+              // style={{ background: playlist?.theme.primary_color}}
               onChange={(e) => {
                 currentAudio.currentTime = e.target.value;
               }}
