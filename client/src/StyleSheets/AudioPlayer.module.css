@@ -256,6 +256,7 @@ input[type="range"]::-webkit-slider-thumb {
   cursor: pointer;
   transition: .04s;
   /* border: 2px solid red; */
+  padding: 0;
 }
 
 .play_container {
