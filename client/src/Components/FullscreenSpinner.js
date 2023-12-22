@@ -6,25 +6,45 @@ export default function FullscreenSpinner() {
         "Making Magic Happen . . .",
         "Getting setup . . .",
         "Adding exciters . . . (just kidding)",
+        "Double-checking your ones and zeros",
+        "Dotting your T's and crossing your eyes",
+        "Pumping up the jam",
+        "Tweaking the tone. Almost there . . .",
+        "Adding Schrödinger's compression",
+        "Handling your audio with care",
+        "Whoops, dropped the bass!",
+        "Loading melodies from the cosmic jukebox",
+        "Warming up the sound waves",
+        "Turning it up to 11 . . .",
+        "Patience, audiophile. Masterpieces take time!",
+        "Gathering rhythms, harmonies, and good vibes!",
+        "Analyzing soundscapes . . . before and after.",
+        "Comparing audio worlds . . . loading the difference.",
+        "Syncing tones, unveiling transformations.",
+        "Exploring contrasts in audio realms . . . loading.",
+        "Preparing the magic of sonic change . . . almost there.",
+        "Syncing past and present sounds... hold on.",
+        "Thinking really hard . . .",
+        "Loading differences, one beat at a time.",
+        "Comparing echoes of the past and present",
     ];
 
-    const [loadMessage, setLoadMessage] = useState(messageArray[0]);
-    const [messageIndex, setMessageIndex] = useState(0);
-    const [showMessage, setShowMessage] = useState(true);
+    const initialMessageIndex = Math.floor(Math.random() * messageArray.length);
+    const [loadMessage, setLoadMessage] = useState(messageArray[initialMessageIndex]);
+    const [prevMessageIndex, setPrevMessageIndex] = useState(-1);
 
     useEffect(() => {
         const messageInterval = setInterval(() => {
-            setShowMessage(!showMessage);
-            if (!showMessage) {
-                // Update the message index using the previous state value
-                setMessageIndex((prevIndex) => (prevIndex + 1) % messageArray.length);
-                // Use the updated messageIndex directly
-                setLoadMessage(messageArray[messageIndex]);
+            let randomIndex = Math.floor(Math.random() * messageArray.length);
+            while (randomIndex === prevMessageIndex) {
+                randomIndex = Math.floor(Math.random() * messageArray.length);
             }
-        }, showMessage ? 4000 : 1000); // 5 seconds message + 2 seconds blank
+            setPrevMessageIndex(randomIndex);
+            setLoadMessage(messageArray[randomIndex]);
+        }, 5000); // Change message every 5 seconds
 
         return () => clearInterval(messageInterval);
-    }, [showMessage, messageIndex, messageArray]);
+    }, [messageArray, prevMessageIndex]);
 
     return (
         <div className={style.fullscreen_div}>
@@ -34,7 +54,7 @@ export default function FullscreenSpinner() {
                     <div></div><div></div><div></div>
                     <div></div><div></div><div></div>
                 </div>
-                <div className={style.load_message}>{showMessage ? loadMessage : " "}</div>
+                <div className={style.load_message}>{loadMessage}</div>
             </div>
         </div>
     );
