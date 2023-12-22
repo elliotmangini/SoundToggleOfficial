@@ -1,7 +1,8 @@
 .skip_button {
   margin-top: 2px;
   margin-left: 5.5px;
-  height: 35px;
-
+  /* height: 35px; */
+  height: 15px;
+  width: 15px;
   /* border: 1px solid red; */
 }
