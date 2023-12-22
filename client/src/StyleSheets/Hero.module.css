@@ -351,10 +351,11 @@
 
 
 .lower_container {
-    width: 90%;
+    width: 100%;
     margin: auto;
     justify-content: center; /* Horizontally center the content */
     background-color: #011739;
+    /* background-color: red; */
     user-select: none;
 }
 
@@ -373,6 +374,7 @@
     margin-top: 1rem;
     /* -webkit-appearance: none; */
     color: black;
+    margin-bottom: 1rem;
 
 }
 
