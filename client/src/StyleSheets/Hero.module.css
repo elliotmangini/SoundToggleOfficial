@@ -16,6 +16,7 @@
     max-width: 500px;
     line-height: 3rem;
     margin-top: 1.5rem;
+    user-select: none;
 }
 
 .left_text {

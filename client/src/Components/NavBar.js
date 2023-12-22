@@ -12,7 +12,7 @@ export default function NavBar ({ user }) {
         <>
 
             <div id={style.nav_container}>
-                <Link to="/" className={style.nav_items}><img className={style.site_logo} src={siteLogo} alt="SoundToggle Logo"></img></Link>
+                <Link to="/" className={style.nav_items}><img className={style.site_logo} draggable="false" src={siteLogo} alt="SoundToggle Logo"></img></Link>
                 <div className={style.links_container}>
                     <Link to="/home" className={style.nav_link}>About</Link>
                     {/* <Link to="/setup" className={style.nav_link}>Setup</Link>
