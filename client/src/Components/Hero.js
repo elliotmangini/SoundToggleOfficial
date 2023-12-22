@@ -62,7 +62,6 @@ export default function Hero({ fetchPlaylist, playlistToDisplay, setPlaylistToDi
       </div>
 
       <div className={style.lower_container}>
-        <div></div>
         <h4 style={{ margin: "0px", padding: "0px" }} ><em>I WANT THIS LIKE YESTERDAY!</em></h4>
         <h1>How do I get one for my site?</h1>
         <p>We have a free demo version available for public testing. You can access the app by clicking the button below. </p>

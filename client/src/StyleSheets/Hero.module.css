@@ -351,12 +351,13 @@
 
 
 .lower_container {
-    width: 95%;
+    width: 100%;
     margin: auto;
     justify-content: center; /* Horizontally center the content */
     background-color: #011739;
     /* background-color: red; */
     user-select: none;
+    padding-top: 1rem;
 }
 
 .lower_container h4 {
