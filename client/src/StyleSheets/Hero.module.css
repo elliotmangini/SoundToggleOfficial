@@ -29,7 +29,7 @@
 }
 
 .finally {
-    padding-bottom: .3rem;
+    /* padding-bottom: .3rem; */
     /* animation: finallyAnimation 1.5s forwards; */
     padding-left: 1rem;
     padding-right: 1rem;
@@ -37,7 +37,7 @@
 
 .cta_mask {
     margin: 1rem;
-    mask-image: linear-gradient(transparent 0%, black 10%, black 100%);
+    mask-image: linear-gradient(transparent 0%, black 6%, black 100%);
     padding: 1rem;
     padding-top: 0rem;
 }
@@ -196,31 +196,33 @@
         color: inherit;
         transform: scale(1);
         /* font-size: 2.8rem; */
-        margin: 0;
+        /* margin: 0; */
+        transform: skewX(0deg);
     }
     85% {
         color: var(--secondary);
-        transform: scale(1.1);
+        transform: scale(1.1) skewX(-15deg);
         /* font-size: 3.4rem; */
-        margin-top: .6rem;
-        margin-bottom: .6rem;
-        margin-left: .3rem;
-        margin-right: .3rem;
+        /* margin-top: .6rem; */
+        /* margin-bottom: .6rem; */
+        /* margin-left: .3rem; */
+        /* margin-right: .3rem; */
+        transform: skewX(-15deg);
     }
     92% {
         color: var(--secondary);
-        transform: scale(1.1);
+        transform: scale(1.1) skewX(-15deg);
         /* font-size: 3.4rem; */
-        margin-top: .6rem;
-        margin-bottom: .6rem;
-        margin-left: .3rem;
-        margin-right: .3rem;
+        /* margin-top: .6rem; */
+        /* margin-bottom: .6rem; */
+        /* margin-left: .3rem; */
+        /* margin-right: .3rem; */
     }
     93% {
         color: inherit;
         transform: scale(1);
         /* font-size: 2.8rem; */
-        margin: 0;
+        /* margin: 0; */
 
     }
     100% {
@@ -278,6 +280,11 @@
     animation: buttonBlink 2s infinite;
     animation-fill-mode: forwards;
     animation-delay: 8s;
+
+    color: black;
+
+    /* -webkit-appearance: none; */
+
 }
 
 @keyframes buttonBlink {
@@ -364,6 +371,9 @@
 .get_started_button {
     padding: 16px;
     margin-top: 1rem;
+    /* -webkit-appearance: none; */
+    color: black;
+
 }
 
 .get_started_button:hover {
