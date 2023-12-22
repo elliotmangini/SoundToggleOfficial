@@ -140,7 +140,7 @@ ul {
   overflow: hidden;
   width: 50%;
   min-width: 220px;
-  border-radius: 1.5px;
+  border-radius: 2px;
   
   cursor: pointer;
   background: grey; /* control background of track */
@@ -149,10 +149,9 @@ ul {
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   cursor: pointer;
-  /* background: red; */
   height: 5px;
   width: 5px;
-  border: 2.8px solid var(--white-1); /* color of thumb */
+  background: var(--white-1);
   border-radius: 0% 50% 50% 0%;
   box-shadow: -200px 0px 0px 198px var(--white-1); /* control color of filled slider */
 }
