@@ -341,7 +341,7 @@
     width: 300px;
     padding: 20px 0px 20px 0px;
     margin: auto;
-    margin: 0 40px;
+    margin: 0 20px;
 }
 
 .additional_blurb h2 {
@@ -351,8 +351,8 @@
 
 
 .lower_container {
-    margin: 0; /* Reset margin */
-    padding: 1rem 8rem 1rem 8rem ; /* Reset padding */
+    width: 90%;
+    margin: auto;
     justify-content: center; /* Horizontally center the content */
     background-color: #011739;
     user-select: none;
