@@ -7,7 +7,8 @@ const SkipButtonIcon = ({ fill }) => {
     <svg 
         className={style.skip_button} 
         xmlns="http://www.w3.org/2000/svg" 
-        viewBox="0 0 550 550" 
+        viewBox="0 0 550 550"
+        // style={{ width: '500px', height: '300px' }}
         fill={`${fill}`}
     >
         <path
