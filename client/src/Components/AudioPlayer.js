@@ -131,10 +131,14 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
         const elements = {};
         initialSongs.forEach((song) => {
           if (!audioElements[song.id]) {
+
+            const artworkImage = new Image();
+            artworkImage.src = song.artwork_url || defaultArtwork;
+
             elements[song.id] = {
               before: new Audio(song.before.audio_url),
               after: new Audio(song.after.audio_url),
-              artwork: song.artwork_url || defaultArtwork,
+              artwork: artworkImage,
             };
           }
         });
@@ -441,7 +445,7 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
               : isEditing
               ? style.opacity_zero
               : ""}`}
-            src={audioElements[currentSongId]?.artwork || defaultArtwork}
+            src={audioElements[currentSongId]?.artwork.src || defaultArtwork}
             alt="Artwork"
           />
       </div>
