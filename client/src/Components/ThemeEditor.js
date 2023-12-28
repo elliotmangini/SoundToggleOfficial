@@ -206,7 +206,7 @@ export default function ThemeEditor({ user, playlist, setPlaylistToDisplay, prev
               </div>
               <div className={style.left_color_setting}>
                 <label>
-                  Selected Song
+                  Selected
                   <input
                     type="color"
                     className={style.input_field}
