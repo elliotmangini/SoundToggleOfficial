@@ -419,7 +419,10 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
     <>
       <div 
         className={style.player_panel}
-        style={{ backgroundColor: `${playlist?.theme.background_color}` }}
+        style={{ 
+          backgroundColor: `${playlist?.theme.background_color}`,
+          borderRadius: `${playlist?.theme.panel_style === 'rounded' ? '1rem' : '0px'}`
+      }}
       >
 
       <div className={style.upper_player}>
@@ -440,11 +443,9 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
           </>
         )}
           <img
-            className={`${style.main_artwork} ${isPlaying && currentAudio === audioElements[currentSongId].after
+            className={`${style.main_artwork} ${playlist?.theme.glow && isPlaying && currentAudio === audioElements[currentSongId].after
               ? style.glowing
-              : isEditing
-              ? style.opacity_zero
-              : ""}`}
+              : isEditing ? style.opacity_zero : ""}`}
             src={audioElements[currentSongId]?.artwork.src || defaultArtwork}
             alt="Artwork"
           />
