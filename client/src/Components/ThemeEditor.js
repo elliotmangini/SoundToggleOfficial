@@ -235,7 +235,7 @@ export default function ThemeEditor({ user, playlist, setPlaylistToDisplay, prev
                       })
                     }
                     />
-                    Text Primary
+                    Text One
                 </label>
               </div>
               <div className={style.right_color_setting}>
@@ -251,7 +251,7 @@ export default function ThemeEditor({ user, playlist, setPlaylistToDisplay, prev
                       })
                     }
                   />
-                  Text Secondary
+                  Text Two
                 </label>
               </div>
               <div className={style.right_color_setting}>
@@ -283,14 +283,14 @@ export default function ThemeEditor({ user, playlist, setPlaylistToDisplay, prev
                       })
                     }
                   />
-                  Toggle Highlight
+                  Toggle
                 </label>
               </div>
             </div>
           </div>
           <div className={style.nomenclature_settings}>
               <label className={style.left_name_setting}>
-                Untoggled Name
+                Untoggled
                 <input
                   type="text"
                   className={`${style.input_field} ${style.untoggled_name_input}`}
@@ -315,7 +315,7 @@ export default function ThemeEditor({ user, playlist, setPlaylistToDisplay, prev
                     })
                   }
                 />
-                Toggled Name
+                Toggled
               </label>
             </div>
           <div className={style.form_container_lower}>
@@ -353,7 +353,7 @@ export default function ThemeEditor({ user, playlist, setPlaylistToDisplay, prev
                 onChange={() =>
                   setPreviewedTheme({
                     ...previewedTheme,
-                    panel_style: ((e) => e.target.checked ? "rounded" : "floating"),
+                    panel_style: (previewedTheme.panel_style === "rounded" ? "floating" : "rounded"),
                   })
                 }
               />
