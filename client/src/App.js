@@ -173,16 +173,7 @@ export default function App() {
             />
           }
         />
-
-        <Route
-        path="waitlist"
-        element={
-          <Waitlist
-          />
-        }
-        />
       </Routes>
-      {/* turn me back on later */}
       {(user && user?.power !== "admin") && (!location.pathname.endsWith("/export")) ? <ContactUs /> : null}
     </>
   );

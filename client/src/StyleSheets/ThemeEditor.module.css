@@ -43,10 +43,6 @@
     width: 100%;
 }
 
-.form_container form {
-    /* display: flex; */
-}
-
 .form_container * {
     flex: 1;
 }
