@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
+import siteLogo from '../Assets/soundtoggle-logo.svg';
 
 import ThemeEditor from "./ThemeEditor.js";
 import AudioUpload from "./AudioUpload.js";
@@ -791,6 +792,8 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
                 {playlist.user.username}
               </a>
             ) : null}
+
+            <div className={style.logo_crop}><img className={style.player_logobrand} src={siteLogo} alt="SoundToggle Logo" /></div>
 
 
 
