@@ -43,6 +43,7 @@ export default function ContactUs({ user }) {
       {isChat && (
         <div className={style.fade_background}>
           <div className={style.chat_panel}>
+            <button onClick={() => setIsChat(false)} className={style.back_button}>X</button>
             <h1>Get in touch!</h1>
             <p>Let us know how we're doing and get some pro features pro bono!</p>
             <form onSubmit={(e) => handleSubmitMessage(e)}>
