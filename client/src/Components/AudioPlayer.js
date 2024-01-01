@@ -789,7 +789,7 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
             {playlist?.theme && playlist.theme.display_user ? (
               <a
                 className={style.author_link}
-                style={{ color: `${playlist.theme.primary_color}` }}
+                style={{ color: `${playlist.theme.text_secondary}` }}
                 href={`/${playlist.user.username}`}
                 target="_blank"
                 rel="noopener noreferrer"

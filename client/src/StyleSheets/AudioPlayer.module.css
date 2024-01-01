@@ -768,8 +768,6 @@ input[type="range"]::-webkit-slider-thumb {
   height: 18px;
   margin: 0;
   margin-top: 10px;
-  /* margin-right: auto;
-  margin-left: 1rem; */
   padding: 0rem .4rem;
   background: rgb(93, 93, 93);
   border-radius: 4px;
