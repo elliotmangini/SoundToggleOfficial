@@ -19,12 +19,12 @@ export default function SongUpload({ user, playlist, fetchPlaylist, getOwnInfo }
   function handleSubmit(e) {
     e.preventDefault();
   
-    if (!formData.title || !formData.primary_attribute || !formData.secondary_attribute) {
-      setErrors(['Please fill out all fields']);
-      return;
-    }
+    // if (!formData.title || !formData.primary_attribute || !formData.secondary_attribute) {
+    //   setErrors(['Please fill out all fields']);
+    //   return;
+    // }
   
-    setErrors([]);
+    // setErrors([]);
   
     const songData = new FormData();
     songData.append('title', formData.title);
@@ -66,62 +66,61 @@ export default function SongUpload({ user, playlist, fetchPlaylist, getOwnInfo }
 
   return (
     <>
-    <h2 className={style.add_song_title}>Add tracks to playlist</h2>
-    <form className={style.add_form} onSubmit={handleSubmit}>
-      {errors.length > 0 && (
-        <div className="error-messages">
-          <ul>
-            {errors.map((error, index) => (
-              <li key={index}>{error}</li>
-            ))}
-          </ul>
+    <div className={style.add_song_panel}>
+      <h2 className={style.add_song_title}>Add Track Details</h2>
+      <form className={style.add_form} onSubmit={handleSubmit}>
+        {errors.length > 0 && (
+          <div className="error-messages">
+            <ul>
+              {errors.map((error, index) => (
+                <li key={index}>{error}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+        <div className={style.input_container}>
+          <label className={style.field_label} htmlFor="title">Title</label>
+          <br/>
+          <input
+            placeholder="Title"
+            type="text"
+            id="title"
+            name="title"
+            value={formData.title}
+            onChange={handleChange}
+            required
+            text-align="center"
+          />
         </div>
-      )}
-
-      <div>
-        <label htmlFor="title"></label>
-        <input
-          placeholder="Title"
-          type="text"
-          id="title"
-          name="title"
-          value={formData.title}
-          onChange={handleChange}
-          required
-          text-align="center"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="primary_attribute"></label>
-        <input
-          placeholder="Primary, ex. Artist"
-          type="text"
-          id="primary_attribute"
-          name="primary_attribute"
-          value={formData.primary_attribute}
-          onChange={handleChange}
-          required
-          text-align="center"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="secondary_attribute"></label>
-        <input
-          placeholder="Secondary, ex. Genre"
-          type="text"
-          id="secondary_attribute"
-          name="secondary_attribute"
-          value={formData.secondary_attribute}
-          onChange={handleChange}
-          required
-          text-align="center"
-        />
-      </div>
-
-      <button className={style.add_track_button} type="submit">Add Track</button>
-    </form>
+        <div className={style.input_container}>
+          <label className={style.field_label} htmlFor="primary_attribute">Detail One <span>(optional)</span></label>
+          <br/>
+          <input
+            placeholder="ex. Artist"
+            type="text"
+            id="primary_attribute"
+            name="primary_attribute"
+            value={formData.primary_attribute}
+            onChange={handleChange}
+            text-align="center"
+          />
+        </div>
+        <div className={style.input_container}>
+          <label className={style.field_label} htmlFor="secondary_attribute">Detail Two <span>(optional)</span></label>
+          <br/>
+          <input
+            placeholder="ex. Genre"
+            type="text"
+            id="secondary_attribute"
+            name="secondary_attribute"
+            value={formData.secondary_attribute}
+            onChange={handleChange}
+            text-align="center"
+          />
+        </div>
+        <button className={style.add_track_button} type="submit">Add Track</button>
+      </form>
+    </div>
     </>
   );
 }

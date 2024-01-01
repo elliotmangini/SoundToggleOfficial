@@ -1,7 +1,7 @@
 .theme_editor_panel {
     /* background: linear-gradient(to bottom, var(--primary) 85%, var(--primary-selected-highlight) 95%, var(--primary-selected-highlight)) !important; */
     /* background-color: white; */
-    position: absolute;
+    /* position: absolute; */
     width: 100%;
     max-width: 500px;
     top: 90px;

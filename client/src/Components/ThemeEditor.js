@@ -320,6 +320,32 @@ export default function ThemeEditor({ user, playlist, setPlaylistToDisplay, prev
             </div>
           <div className={style.form_container_lower}>
             <label>
+              Glow Effect:
+              <input
+                type="checkbox"
+                checked={previewedTheme.glow}
+                onChange={() =>
+                  setPreviewedTheme({
+                    ...previewedTheme,
+                    glow: !previewedTheme.glow,
+                  })
+                }
+              />
+            </label>
+            <label>
+              Panel Rounding:
+              <input
+                type="checkbox"
+                checked={previewedTheme.panel_style === "rounded"}
+                onChange={() =>
+                  setPreviewedTheme({
+                    ...previewedTheme,
+                    panel_style: (previewedTheme.panel_style === "rounded" ? "floating" : "rounded"),
+                  })
+                }
+              />
+            </label>
+            <label>
               Author Link:
               <input
                 type="checkbox"
@@ -333,7 +359,7 @@ export default function ThemeEditor({ user, playlist, setPlaylistToDisplay, prev
               />
             </label>
             <label>
-              Blurb:
+              Logo:
               <input
                 type="checkbox"
                 checked={previewedTheme.display_blurb}
@@ -341,32 +367,6 @@ export default function ThemeEditor({ user, playlist, setPlaylistToDisplay, prev
                   setPreviewedTheme({
                     ...previewedTheme,
                     display_blurb: !previewedTheme.display_blurb,
-                  })
-                }
-              />
-            </label>
-            <label>
-              Rounded:
-              <input
-                type="checkbox"
-                checked={previewedTheme.panel_style === "rounded"}
-                onChange={() =>
-                  setPreviewedTheme({
-                    ...previewedTheme,
-                    panel_style: (previewedTheme.panel_style === "rounded" ? "floating" : "rounded"),
-                  })
-                }
-              />
-            </label>
-            <label>
-              Glow Effect:
-              <input
-                type="checkbox"
-                checked={previewedTheme.glow}
-                onChange={() =>
-                  setPreviewedTheme({
-                    ...previewedTheme,
-                    glow: !previewedTheme.glow,
                   })
                 }
               />

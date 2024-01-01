@@ -1,6 +1,36 @@
+.add_song_panel {
+    background-color: var(--primary);
+    border-radius: 10px;
+    max-width: 400px;
+    margin: auto;
+}
+
 .add_song_title {
     margin-bottom: 0;
-    margin-top: 1.5rem;
+    /* margin-top: 1.5rem; */
+    padding-top: .5rem;
+    background: linear-gradient(var(--primary-selected), var(--primary));
+    border-radius: 10px;
+}
+
+.input_container {
+    width: fit-content;
+    /* border: 2px solid red; */
+    /* margin: 0 auto; */
+    box-sizing: border-box;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.field_label {
+    float: left;
+    /* border: 2px solid blue; */
+    font-size: 14px;
+}
+
+.field_label span {
+    opacity: 60%;
 }
 
 .add_form input::placeholder {
@@ -9,8 +39,11 @@
 
 .add_form input {
     text-align: center;
+    width: 220px;
+    border-radius: 4px;
 }
 
 .add_track_button {
     padding: 10px;
+    margin-bottom: 1rem;
 }

@@ -22,6 +22,7 @@ import PauseButtonIcon from './PauseButtonIcon.js';
 import SkipButtonIcon from './SkipButtonIcon.js';
 import ShareButtonIcon from './ShareButtonIcon.js';
 import TrashButtonIcon from "./TrashButtonIcon.js";
+import SoundToggleLogoIcon from "./SoundToggleLogoIcon.js";
 
 import apiUrl from "../apiConfig.js";
 
@@ -418,6 +419,11 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
 
   return (
     <>
+            {isEditing && user?.id !== undefined && user?.id === playlist?.user?.id &&(
+              <>
+                <AddSong user={user} playlist={playlist} fetchPlaylist={fetchPlaylist} />
+              </>
+            )}
       <div 
         className={style.player_panel}
         style={{ 
@@ -425,7 +431,6 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
           borderRadius: `${playlist?.theme.panel_style === 'rounded' ? '1rem' : '0px'}`
       }}
       >
-
       <div className={style.upper_player}>
         {user?.id !== undefined && user?.id === playlist?.user?.id && (
           <>
@@ -446,14 +451,14 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
           <img
             className={`${style.main_artwork} ${playlist?.theme.glow && isPlaying && currentAudio === audioElements[currentSongId].after
               ? style.glowing
-              : isEditing ? style.opacity_zero : ""}`}
+              : ""}`}
             src={audioElements[currentSongId]?.artwork.src || defaultArtwork}
             alt="Artwork"
           />
       </div>
 
         {/* USER CONTROLS UPPER MIDDLE */}
-        <div className={`${style.user_controls} ${isEditing ? style.opacity_zero : style.opacity_one}`}>
+        <div className={`${style.user_controls} ${style.opacity_one}`}>
           <div className={style.playback_buttons}>
             <button
               className={`${style.icon_container} ${style.previous}`}
@@ -793,15 +798,17 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
               </a>
             ) : null}
 
-            <div className={style.logo_crop}><img className={style.player_logobrand} src={siteLogo} alt="SoundToggle Logo" /></div>
-
-
-
-            {isEditing && user?.id !== undefined && user?.id === playlist?.user?.id &&(
-              <>
-                <AddSong user={user} playlist={playlist} fetchPlaylist={fetchPlaylist} />
-              </>
-            )}
+            { playlist?.theme.display_blurb ?
+            <a href="https://soundtoggle.io" target="_blank">
+              <div className={style.logo_crop}>
+                <img
+                  className={style.player_logobrand}
+                  src={siteLogo} alt="SoundToggle Logo"
+                />
+                {/* <SoundToggleLogoIcon /> */}
+              </div>
+            </a>
+            : null }
           </ul>
         </div>
       </div>
