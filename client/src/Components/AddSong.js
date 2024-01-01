@@ -67,7 +67,8 @@ export default function SongUpload({ user, playlist, fetchPlaylist, getOwnInfo }
   return (
     <>
     <div className={style.add_song_panel}>
-      <h2 className={style.add_song_title}>Add Track Details</h2>
+      <h1 className={style.add_song_title}>Add Track</h1>
+      {/* <h2 className={style.add_song_subheading}>Details</h2> */}
       <form className={style.add_form} onSubmit={handleSubmit}>
         {errors.length > 0 && (
           <div className="error-messages">

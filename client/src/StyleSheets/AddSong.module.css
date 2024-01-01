@@ -13,6 +13,12 @@
     border-radius: 10px;
 }
 
+.add_song_subheading {
+    margin-bottom: 0;
+    border-radius: 10px;
+    margin: 0;
+}
+
 .input_container {
     width: fit-content;
     /* border: 2px solid red; */
