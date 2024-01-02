@@ -64,7 +64,7 @@ class User < ApplicationRecord
     def username_not_reserved
 
         # Add more reserved route names as needed
-        reserved_route_names = ["login", "logout", "signup", "home", "setup", "pricing", "admin"]
+        reserved_route_names = ["login", "logout", "signup", "home", "about", "setup", "pricing", "admin"]
         if reserved_route_names.include?(username.downcase)
             errors.add(:username, "is not available. Please choose a different one.")
         end

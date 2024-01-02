@@ -1,5 +1,5 @@
 import React from "react";
-import style from "../StyleSheets/Home.module.css";
+import style from "../StyleSheets/About.module.css";
 import Avatar from "../Assets/placeholder-avatar.png";
 import Matt from "../Assets/matt_pfp.png";
 import Elliot from "../Assets/elliot_pfp.png";
@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 import apiUrl from '../apiConfig.js';
 
 
-export default function Home() {
+export default function About() {
     const [latestVersion, setLatestVersion] = useState(null);
 
     console.log({latestVersion})
@@ -40,7 +40,7 @@ export default function Home() {
 
 
   return (
-    <div className={style.home_page}>
+    <div className={style.about_page}>
       <section>
         <h1 className={style.welcome}>Welcome to <span>SoundToggle</span>!</h1>
         <img 
@@ -79,7 +79,7 @@ export default function Home() {
 
       <section>
         <h1><span>Benefits</span></h1>
-        
+
         <h3>Engaging A/B Comparisons</h3>
         <p>Compare audio versions with SoundToggle, allowing your audience to perceive transformative changes in real-time.</p>
 

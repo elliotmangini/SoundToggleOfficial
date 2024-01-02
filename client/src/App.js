@@ -13,7 +13,7 @@ import Logout from "./Components/Logout";
 import AudioPlayer from "./Components/AudioPlayer";
 import ContactUs from "./Components/ContactUs";
 import Admin from "./Components/Admin";
-import Home from "./Components/Home";
+import About from "./Components/About";
 import Setup from "./Components/Setup";
 import Pricing from "./Components/Pricing";
 import PasswordReset from "./Components/PasswordReset";
@@ -142,7 +142,7 @@ export default function App() {
         )}
         <Route path="/logout" element={<Logout setUser={setUser} />} />{" "}
         {/* this is here for utility */}
-        <Route path="/home" element={<Home user={user} />} />
+        <Route path="/about" element={<About user={user} />} />
         <Route path="/setup" element={<Setup user={user} />} />
         <Route path="/pricing" element={<Pricing user={user} />} />
         <Route path="/admin" element={<Admin user={user} />} />

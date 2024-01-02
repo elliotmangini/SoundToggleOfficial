@@ -40,7 +40,7 @@ export default function NavBar ({ user }) {
                     </img>
                 </Link>
                 <div className={style.links_container}>
-                    <Link to="/home" className={style.nav_link}>About</Link>
+                    <Link to="/about" className={style.nav_link}>About</Link>
                     <Link to="/setup" className={style.nav_link}>Setup</Link>
                     {/* <Link to="/pricing" className={style.nav_link}>Pricing</Link> */}
                     {user?.power === 'admin' ? (

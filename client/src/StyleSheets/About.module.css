@@ -1,8 +1,8 @@
-.home_page {
+.about_page {
 
 }
 
-.home_page section {
+.about_page section {
     border-radius: 20px;
     background-color: var(--primary);
     padding: 10px;
@@ -10,11 +10,11 @@
     max-width: 700px;
 }
 
-.home_page h1 span {
+.about_page h1 span {
     color: var(--secondary)
 }
 
-.home_page h2 {
+.about_page h2 {
     margin-bottom: 0;
 }
 
