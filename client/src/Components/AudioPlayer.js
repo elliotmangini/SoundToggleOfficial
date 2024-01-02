@@ -29,10 +29,7 @@ import apiUrl from "../apiConfig.js";
 
 
 export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setUser, fetchPlaylist, isEditing, setIsEditing }) {
-
-  console.log(playlist);
-
-
+  // console.log(playlist);
 
   const { urlUsername } = useParams();
   const { urlPlaylist } = useParams();
@@ -124,9 +121,11 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
 
 
   useEffect(() => {
-    // console.log("effect is running"); this is a problem
+    console.log("effect is running");
     // I think this is like "automatically update HTML audio elements when our playlist updates?"
     if (playlist && Object.keys(playlist).length > 0) {
+
+      // If there's no songs in the playlist, the only thing to do is Edit, so we force it true.
       if (playlist.songs?.length === 0 && playlist.user?.username === user?.username) {
         setIsEditing(true);
       }
@@ -157,10 +156,16 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
       
       setCurrentSongId(initialSongs.length > 0 ? initialSongs[0].id : null);
     }
-  }, [playlist, audioElements, user]);
+    // I removed AudioElements from this dependency array and that may break something, but atm it seems to have fixed an infinite loop.
+  }, [playlist, user]);
   
 
   useEffect(() => {
+    console.log("effect is running");
+    // console.log("one of these is changing rapidly");
+    // console.log({currentSongId});
+    // console.log({audioElements});
+    // console.log({playlist});
     if (currentSongId && audioElements[currentSongId]) {
       const initialAudio = audioElements[currentSongId].before;
       setCurrentAudio(initialAudio);
@@ -184,7 +189,7 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
         audio.removeEventListener("ended", () => {});
       };
     }
-  }, [currentSongId, audioElements]);
+  }, [currentSongId, audioElements, playlist]);
 
   const togglePlayback = () => {
     if (!isEditing) {
