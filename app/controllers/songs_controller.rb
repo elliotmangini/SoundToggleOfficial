@@ -10,7 +10,24 @@ class SongsController < ApplicationController
 
   # GET /songs/1
   def show
-    render json: @song
+    playlist = {
+      id: @song.playlist.id,
+      name: @song.playlist.name,
+      blurb: @song.playlist.blurb,
+      theme: @song.playlist.theme.as_json,
+      user: @song.playlist.user.as_json,
+      songs: [{
+        after: @song.after.as_json(methods: [:audio_url]),
+        before: @song.before.as_json(methods: [:audio_url]),
+        artwork_url: @song.artwork_url,
+        id: @song.id,
+        primary_attribute: @song.primary_attribute,
+        secondary_attribute: @song.secondary_attribute,
+        title: @song.title,
+      }]
+    }
+
+    render json: playlist
   end
 
   # POST /songs

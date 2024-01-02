@@ -17,7 +17,7 @@ import About from "./Components/About";
 import Setup from "./Components/Setup";
 import Pricing from "./Components/Pricing";
 import PasswordReset from "./Components/PasswordReset";
-import Waitlist from "./Components/Waitlist";
+import SingleSong from "./Components/SingleSong";
 
 import apiUrl from './apiConfig.js';
 
@@ -58,9 +58,9 @@ export default function App() {
   }
 
   function fetchPlaylist(username, playlistUrl = "default") {
-    console.log(
-      `Fetching playlist endpoint: /playlists/${username}/${playlistUrl}`
-    );
+    // console.log(
+    //   `Fetching playlist endpoint: /playlists/${username}/${playlistUrl}`
+    // );
     fetch(`${apiUrl}/playlists/${username}/${playlistUrl}`)
       .then((resp) => {
         if (resp.ok) {
@@ -78,6 +78,8 @@ export default function App() {
         console.error(error);
       });
   }
+
+
 
   useEffect(() => {
     getOwnInfo();
@@ -138,6 +140,15 @@ export default function App() {
                 />
               }
             />
+            {/* individual songs as viewable from inside the site */}
+            <Route
+              path="/:urlUsername/s/:songID/*"
+              element={
+                <SingleSong
+                  // fetchSong={fetchSong}
+                />
+              }
+            />
           </>
         )}
         <Route path="/logout" element={<Logout setUser={setUser} />} />{" "}
@@ -148,7 +159,7 @@ export default function App() {
         <Route path="/admin" element={<Admin user={user} />} />
         <Route path="/passwordreset" element={<PasswordReset />} />
         {/* EXPORTED ROUTES */}
-        <Route
+        {/* <Route
           path="/export/:urlUsername/:urlPlaylist/*"
           element={
             <AudioPlayer
@@ -159,7 +170,7 @@ export default function App() {
               setIsEditing={setIsEditing}
             />
           }
-        />
+        /> */}
 
         {/* exporting route */}
         <Route

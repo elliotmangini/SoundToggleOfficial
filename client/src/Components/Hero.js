@@ -3,14 +3,14 @@ import style from "../StyleSheets/Hero.module.css";
 
 import AudioPlayer from "./AudioPlayer";
 
-export default function Hero({ fetchPlaylist, playlistToDisplay, setPlaylistToDisplay, user }) {
+export default function Hero({ fetchPlaylist, playlistToDisplay, user }) {
 
   useEffect(() => {
     fetchPlaylist("heroplaylist");
   }, []);
 
 
-  function handleGetYours() {
+  function handleGetYoursButton() {
     if (user) {
       // Redirect signed-in user to their profile page
       window.location.href = `/${user.username}`;
@@ -33,7 +33,7 @@ export default function Hero({ fetchPlaylist, playlistToDisplay, setPlaylistToDi
               </div>
             </div>
           </h3>
-          <button onClick={() => handleGetYours()} className={style.get_yours_button}>GET YOURS</button>
+          <button onClick={() => handleGetYoursButton()} className={style.get_yours_button}>GET YOURS</button>
         </div>
         <div className={style.right_half}>
           <div className={style.inset_player}>
@@ -65,7 +65,7 @@ export default function Hero({ fetchPlaylist, playlistToDisplay, setPlaylistToDi
         <h4 style={{ margin: "0px", padding: "0px" }} ><em>I WANT THIS LIKE YESTERDAY!</em></h4>
         <h1>How do I get one for my site?</h1>
         <p>We have a free demo version available for public testing. You can access the app by clicking the button below. </p>
-        <button onClick={() => handleGetYours()} className={style.get_started_button}>GET STARTED</button>
+        <button onClick={() => handleGetYoursButton()} className={style.get_started_button}>GET STARTED</button>
       </div>
     </>
   );

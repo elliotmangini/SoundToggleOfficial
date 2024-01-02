@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import siteLogo from '../Assets/soundtoggle-logo.svg';
 
 import ThemeEditor from "./ThemeEditor.js";
@@ -30,6 +30,10 @@ import apiUrl from "../apiConfig.js";
 
 export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setUser, fetchPlaylist, isEditing, setIsEditing }) {
 
+  console.log(playlist);
+
+
+
   const { urlUsername } = useParams();
   const { urlPlaylist } = useParams();
 
@@ -37,6 +41,7 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
   const [visibleSpinner, setVisibleSpinner] = useState(null); // this never needs to be set manually
 
   useEffect(() => {
+    console.log("effect is running");
     if (isEditSpinner) {
       const invisibleSpinnerDuration = 500; // Half a second
       const fullScreenSpinnerDuration = 1000; // One second
@@ -101,6 +106,7 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
 
   // Trigger fetch of playlist only in the instance we are viewing another user's page
   useEffect(() => {
+    console.log("effect is running");
     if (!playlist && urlUsername && urlPlaylist) {
       console.log(playlist);
       console.log(urlPlaylist);
@@ -110,6 +116,7 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
   }, [playlist, urlUsername, urlPlaylist, fetchPlaylist]);
 
   useEffect(() => {
+    console.log("effect is running");
     if (!isEditing) {
       setIsEditPencil(false);
     }
@@ -117,6 +124,7 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
 
 
   useEffect(() => {
+    // console.log("effect is running"); this is a problem
     // I think this is like "automatically update HTML audio elements when our playlist updates?"
     if (playlist && Object.keys(playlist).length > 0) {
       if (playlist.songs?.length === 0 && playlist.user?.username === user?.username) {
@@ -308,8 +316,8 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
       .replace(/(^-|-$)/g, '');
   };
 
-  const copySongNameToClipboard = (songName) => {
-    const songLink = `https://soundtoggle.io/${urlUsername}/${convertToKebabCase(playlist.name)}/${convertToKebabCase(songName)}`;
+  const handleCopySingleToClipboard = (songID) => {
+    const songLink = `https://soundtoggle.io/${urlUsername}/s/${songID}`;
     navigator.clipboard.writeText(songLink).then(() => {
       alert("Copied to clipboard!");
     });
@@ -320,8 +328,6 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
   
     if (confirmation) {
       setIsEditSpinner(true);
-      // Send a DELETE request to your backend to remove the song with the given songId.
-      // You'll need to implement the DELETE request in your API.
       fetch(`${apiUrl}/songs/${songId}`, {
         method: 'DELETE',
         headers: {},
@@ -427,8 +433,8 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
       <div 
         className={style.player_panel}
         style={{ 
-          backgroundColor: `${playlist?.theme.background_color}`,
-          borderRadius: `${playlist?.theme.panel_style === 'rounded' ? '1rem' : '0px'}`
+          backgroundColor: `${playlist?.theme?.background_color}`,
+          borderRadius: `${playlist?.theme?.panel_style === 'rounded' ? '1rem' : '0px'}`
       }}
       >
       <div className={style.upper_player}>
@@ -449,7 +455,7 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
           </>
         )}
           <img
-            className={`${style.main_artwork} ${playlist?.theme.glow && isPlaying && currentAudio === audioElements[currentSongId].after
+            className={`${style.main_artwork} ${playlist?.theme?.glow && isPlaying && currentAudio === audioElements[currentSongId].after
               ? style.glowing
               : ""}`}
             src={audioElements[currentSongId]?.artwork.src || defaultArtwork}
@@ -462,30 +468,30 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
           <div className={style.playback_buttons}>
             <button
               className={`${style.icon_container} ${style.previous}`}
-              style={{ backgroundColor: `${playlist?.theme.primary_color}` }}
+              style={{ backgroundColor: `${playlist?.theme?.primary_color}` }}
               onClick={() => handleSongChange(getPreviousSong())}
             >
               <SkipButtonIcon
-              fill={playlist?.theme.secondary_color}
+              fill={playlist?.theme?.secondary_color}
               />
             </button>
             <button
               className={`${style.icon_container} ${style.play_container}`}
-              style={{ backgroundColor: `${playlist?.theme.primary_color}` }}
+              style={{ backgroundColor: `${playlist?.theme?.primary_color}` }}
               onClick={togglePlayback}
             >
               {!isPlaying ?
-                <PlayButtonIcon fill={playlist?.theme.secondary_color}/>
+                <PlayButtonIcon fill={playlist?.theme?.secondary_color}/>
                 :
-                <PauseButtonIcon fill={playlist?.theme.secondary_color}/>
+                <PauseButtonIcon fill={playlist?.theme?.secondary_color}/>
                 }
             </button>
             <button
               className={style.icon_container}
-              style={{ backgroundColor: `${playlist?.theme.primary_color}` }}
+              style={{ backgroundColor: `${playlist?.theme?.primary_color}` }}
               onClick={() => handleSongChange(getNextSong())}
             >
-              <SkipButtonIcon fill={playlist?.theme.secondary_color} />
+              <SkipButtonIcon fill={playlist?.theme?.secondary_color} />
             </button>
           </div>
           <div className={style.timeline_container}>
@@ -507,13 +513,13 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
           <div
             className={style.toggle_module}
             style={{
-              color: `${playlist?.theme.text_primary_color}`,
-              backgroundColor: `${playlist?.theme.primary_color}`
+              color: `${playlist?.theme?.text_primary_color}`,
+              backgroundColor: `${playlist?.theme?.primary_color}`
             }}
           >
             <p
-              style={{ color: `${playlist?.theme.toggle_text_color}`, fontWeight: 'bold'}}
-            >{playlist?.theme.untoggled_name}</p>
+              style={{ color: `${playlist?.theme?.toggle_text_color}`, fontWeight: 'bold'}}
+            >{playlist?.theme?.untoggled_name}</p>
             <label className={style.toggle_switch}>
               <input
                 onChange={toggleSource}
@@ -523,13 +529,13 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
               <span
                 className={style.slider}
                 style={{
-                  backgroundColor: `${currentAudio === audioElements[currentSongId]?.after ? playlist?.theme.toggle_highlight_color : playlist?.theme.secondary_color }`
+                  backgroundColor: `${currentAudio === audioElements[currentSongId]?.after ? playlist?.theme?.toggle_highlight_color : playlist?.theme?.secondary_color }`
                 }}
               ></span>
             </label>
             <p
-              style={{ color: `${playlist?.theme.toggle_text_color}`, fontWeight: 'bold'}}
-            >{playlist?.theme.toggled_name}</p>
+              style={{ color: `${playlist?.theme?.toggle_text_color}`, fontWeight: 'bold'}}
+            >{playlist?.theme?.toggled_name}</p>
           </div>
         </div>
 
@@ -545,13 +551,13 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
         
         <div className={style.playlist_div}>
           <ul className={style.playlist}>
-            {playlist && playlist.songs.length > 0 ? (
+            {playlist && playlist?.songs?.length > 0 ? (
               playlist.songs.map((song) => (
                 <div
                   key={song.id}
                   className={`${style.song} ${isEditing ? style.editing_panel_bkgd : null}`}
                   style={{
-                    backgroundColor: `${(currentSongId === song.id) || isEditing ? playlist.theme.tertiary_color : playlist.theme.background_color}`,
+                    backgroundColor: `${(currentSongId === song.id) || isEditing ? playlist?.theme?.tertiary_color : playlist.theme.background_color}`,
                     display: `${(!song?.before.audio_url || !song?.after.audio_url) && (user?.id !== playlist?.user.id) ? 'none' : null}` // keep songs without audio files from rendering unless the user owns the playlist owner and is on their own page
                   }}
                 >
@@ -648,7 +654,7 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
                             </div>
                           )}
                           {!isEditing && (
-                          <button className={style.share_button} onClick={() => copySongNameToClipboard(song.title)}>
+                          <button className={style.share_button} onClick={() => handleCopySingleToClipboard(song.id)}>
                             <ShareButtonIcon />
                           </button>
                           )}
@@ -794,11 +800,11 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {playlist.user.username}
+                {playlist?.user?.username}
               </a>
             ) : null}
 
-            { playlist?.theme.display_blurb ?
+            { playlist?.theme?.display_blurb ?
             <a href="https://soundtoggle.io" target="_blank">
               <div className={style.logo_crop}>
                 <img
