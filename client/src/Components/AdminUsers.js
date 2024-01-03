@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
+
 import apiUrl from '../apiConfig.js';
+
+import style from '../StyleSheets/AdminUsers.module.css';
 
 export default function TicketDashboard() {
   const [ourUsers, setOurUsers] = useState(null);
@@ -31,7 +34,7 @@ export default function TicketDashboard() {
 
   return (
     <div>
-      <button onClick={() => copyEmails()}>Copy Newsletter Emails</button>
+      <button className={style.newsletters_button} onClick={() => copyEmails()}>Copy Newsletter Emails</button>
       
       {ourUsers && ourUsers.user_data && (
         <div>

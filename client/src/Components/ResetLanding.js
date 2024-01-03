@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import style from "../StyleSheets/ResetLanding.module.css";
 
-import apiUrl from './apiConfig.js';
+import apiUrl from '../apiConfig.js';
 
 export default function ResetLanding() {
   const { password_reset_token } = useParams();

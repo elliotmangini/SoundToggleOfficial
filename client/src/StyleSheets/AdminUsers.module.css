@@ -1,0 +1,8 @@
+.newsletters_button {
+    padding: 1rem;
+    color: var(--tertiary)
+}
+
+.newsletters_button:hover {
+    background-color: var(--success)
+}
