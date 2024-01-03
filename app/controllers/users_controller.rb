@@ -21,15 +21,21 @@ class UsersController < ApplicationController
       # Retrieve all users from the database
       users = User.all
   
+      # Extract usernames and creation dates from the users
+      user_data = users.map { |user| { username: user.username, created_at: user.created_at } }
+  
+      # Sort user_data based on created_at in descending order (newest to oldest)
+      user_data.sort_by! { |user| user[:created_at] }.reverse!
+  
       # Extract the email addresses from the users and join them into a single string
       emails = users.pluck(:email).join(", ")
   
-      # Now the 'emails' variable contains a comma-separated list of email addresses
-      render plain: emails
+      # Now render the response as JSON
+      render json: { user_data: user_data, emails: emails }
     else
       render json: { error: 'Access denied. You do not have admin privileges.' }, status: :forbidden
     end
-  end
+  end  
 
   def update_bio
     bio = params[:bio]

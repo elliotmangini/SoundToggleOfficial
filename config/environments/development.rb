@@ -34,9 +34,20 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
-
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_caching = false
+  config.action_mailer.perform_caching = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: "soundtoggle.io" }
+  config.action_mailer.smtp_settings = {
+    address: Rails.application.credentials.dig(:smtp, :address),
+    port: Rails.application.credentials.dig(:smtp, :port),
+    domain: Rails.application.credentials.dig(:smtp, :domain),
+    user_name: Rails.application.credentials.dig(:smtp, :user_name),
+    password: Rails.application.credentials.dig(:smtp, :password),
+    authentication: Rails.application.credentials.dig(:smtp, :authentication),
+    enable_starttls_auto: Rails.application.credentials.dig(:smtp, :enable_starttls_auto)
+  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -62,13 +73,9 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
-  
-  # config.action_mailer.default_url_options = { host: "localhost:4000" }
 
 end
 
 Rails.application.routes.default_url_options = {
   host: 'http://localhost', port: 3000
 }
-
-  # config.action_mailer.asset_host = "http://localhost:3000"

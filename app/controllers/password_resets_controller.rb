@@ -7,11 +7,11 @@ class PasswordResetsController < ApplicationController
       puts "🚨🚨🚨 #{params[:email]} 🚨🚨🚨"
       puts "🚨🚨🚨 #{@user} 🚨🚨🚨"
   
-      if @user.present? # Removed unnecessary parentheses here
-        # send email
+      if @user.present?
+        @user.generate_password_reset_token
         PasswordMailer.with(user: @user).password_reset.deliver_now
       end
-      
     end
+    
   end
   

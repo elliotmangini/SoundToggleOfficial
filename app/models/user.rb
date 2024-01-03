@@ -57,6 +57,12 @@ class User < ApplicationRecord
       save!
       PasswrodMailer.password_reset(self).deliver
     end
+
+    def generate_password_reset_token
+      self.reset_token = SecureRandom.urlsafe_base64
+      self.reset_token_expires_at = 1.hour.from_now
+      save!
+    end
       
   
     private

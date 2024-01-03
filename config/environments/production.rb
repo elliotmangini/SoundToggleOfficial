@@ -57,8 +57,18 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "planetariyum_production"
 
   config.action_mailer.perform_caching = false
-
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: "soundtoggle.io" }
+  config.action_mailer.smtp_settings = {
+    address: Rails.application.credentials.dig(:smtp, :address),
+    port: Rails.application.credentials.dig(:smtp, :port),
+    domain: Rails.application.credentials.dig(:smtp, :domain),
+    user_name: Rails.application.credentials.dig(:smtp, :user_name),
+    password: Rails.application.credentials.dig(:smtp, :password),
+    authentication: Rails.application.credentials.dig(:smtp, :authentication),
+    enable_starttls_auto: Rails.application.credentials.dig(:smtp, :enable_starttls_auto)
+  }
+
 
 
   # Ignore bad email addresses and do not raise email delivery errors.
