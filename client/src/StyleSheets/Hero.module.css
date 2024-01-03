@@ -403,3 +403,42 @@
     }
 
 }
+
+.panel_style section {
+    border-radius: 20px;
+    background-color: var(--primary);
+    padding: 10px;
+    margin: 20px auto 20px auto;
+    max-width: 700px;
+}
+
+.panel_style h1 {
+    /* color: var(--white-2) */
+}
+
+.panel_style h1 span {
+    color: var(--secondary)
+}
+
+.panel_style h3 {
+    color: var(--secondary) !important;
+    margin: 0;
+}
+
+.panel_style {
+    margin: 0;
+    font-size: 14px;
+}
+
+.panel_style h1 {
+    font-size: 2rem;
+}
+
+.panel_style div {
+    background-color: var(--primary-selected);
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+    padding: .5rem;
+}

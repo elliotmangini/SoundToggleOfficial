@@ -11,8 +11,6 @@ import apiUrl from '../apiConfig.js';
 export default function About() {
     const [latestVersion, setLatestVersion] = useState(null);
 
-    console.log({latestVersion})
-
     useEffect(() => {
       // Fetch the most recent version when the component mounts
       fetch(`${apiUrl}/current_version`)
@@ -24,18 +22,6 @@ export default function About() {
           console.error("Error fetching latest version:", error);
         });
     }, []); // The empty dependency array makes this effect run once when the component mounts
-
-
-    function formatTextWithLineBreaks(text) {
-        if (text) {
-            return text.split('\n').map((line, index) => (
-              <>
-                {line}
-                <br />
-              </>
-            ));
-        }
-      }
 
 
 
@@ -62,54 +48,19 @@ export default function About() {
         </div>
       </section> */}
 
-      {/* <section>
+      <section>
         <h2>About Us</h2>
         <div className={style.headshot_container}>
             <img src={Matt}></img>
             <img src={Elliot}></img>
         </div>
         <p>
-          We are Audio Engineers who are passionate about
-          delivering a seamless version-audio player. Matt Ebso is founder of
+          We are Audio Engineers passionate about
+          delivering the seamless version-audio player we wished existed when we started our careers. Matt Ebso is founder of
           &nbsp;<a href="https://cloverleaf.audio/" target="_blank">Cloverleaf Audio-Visual</a>&nbsp;
           based in Minneapolis, MN and Elliot is a &nbsp;<a href="https://elliotmangini.dev/" target="_blank">Developer</a>&nbsp;and Drum & Bass
           producer as &nbsp;<a href="https://www.youtube.com/watch?v=NNnNKWoEDDk&t=1622s" target="_blank">Big Sister</a>.
         </p>
-      </section> */}
-
-      <section>
-        <h1><span>Benefits</span></h1>
-
-        <h3>Engaging A/B Comparisons</h3>
-        <p>Compare audio versions with SoundToggle, allowing your audience to perceive transformative changes in real-time.</p>
-
-        <h3>Complete Customization:</h3>
-        <p>SoundToggle’s player is fully customizable. Tailor the player to match your brand without the need for coding or development expertise.</p>
-
-        <h3>User-Friendly Integration:</h3>
-        <p>Easily integrate our player into any major CMS website builder like Squarespace, Wix, and more, with no coding knowledge required. Just click export on the player and paste the code block into your site - done.</p>
-
-        <h3>Lossless Audio Quality:</h3>
-        <p>Preserve every nuance and detail in your audio creations with SoundToggle's lossless audio quality, ensuring an optimal user listening experience.</p>
-
-        <h3>Share Anywhere:</h3>
-        <p>Effortlessly share your audio creations by embedding the player in an unlimited number of websites. Alternatively, send a direct URL link to the player hosted on our platform, enabling you to share your work with anyone, anywhere, and at any time.</p>
-
-        <h3>Universal Compatibility:</h3>
-        <p>Ensure broader accessibility with SoundToggle's universal compatibility across devices and browsers, without compromising quality.</p>
-
-        <h3>Time-Efficient Integration:</h3>
-        <p>Save time with SoundToggle's quick and hassle-free integration process, allowing you to focus more on your audio creations.</p>
-
-        <h3>Easy To Use:</h3>
-        <p>SoundToggle caters to users of all expertise levels, providing an intuitive platform for both accomplished professionals and newcomers.</p>
-
-        <h3>Modern Portfolio Presentation:</h3>
-        <p>Showcase your audio portfolio in style. We love SoundCloud, but your website deserves an audio player that integrates perfectly with your site's aesthetic. Show off your mixdowns, enhancements, and transformations in a way that aligns with your unique style. Treat your audience to a smoother and more captivating presentation experience.</p>
-
-        <h3>Immersive User Experience:</h3>
-        <p>Engage and impress your audience authentically with SoundToggle, allowing them to hear, see, and feel the transformative power of your audio services or product.</p>
-
       </section>
 
       <section>
