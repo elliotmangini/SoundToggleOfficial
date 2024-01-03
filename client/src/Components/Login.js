@@ -68,12 +68,12 @@ export default function Login({ user, setUser }) {
               {isLoading ? "Loading..." : "Login"}
             </button>
           <div className={style.forgot_container}>
-            {/* <a 
+            <a 
               className={style.forgot_password_link}
               href="/passwordreset"
             >
               Forgot your password?
-            </a> */}
+            </a>
           </div>
         </div>
         </div>
