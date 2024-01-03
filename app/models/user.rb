@@ -51,18 +51,16 @@ class User < ApplicationRecord
       }
     end
 
-    def send_password_reset
-      generate_token(:password_reset_token)
-      self.password_reset_sent_at = Time.zone.now
-      save!
-      PasswrodMailer.password_reset(self).deliver
-    end
-
     def generate_password_reset_token
-      self.reset_token = SecureRandom.urlsafe_base64
-      self.reset_token_expires_at = 1.hour.from_now
-      save!
+      self.password_reset_token = SecureRandom.urlsafe_base64
+      self.password_reset_sent_at = Time.zone.now
+      save(validate: false)
     end
+  
+    def password_reset_token_expired?
+      password_reset_sent_at < 1.hour.ago
+    end
+    
       
   
     private

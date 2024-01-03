@@ -18,6 +18,7 @@ import Setup from "./Components/Setup";
 import Pricing from "./Components/Pricing";
 import PasswordReset from "./Components/PasswordReset";
 import SingleSong from "./Components/SingleSong";
+import ResetLanding from "./Components/ResetLanding";
 
 import apiUrl from './apiConfig.js';
 
@@ -182,6 +183,14 @@ export default function App() {
               isEditing={isEditing}
               setIsEditing={setIsEditing}
             />
+          }
+        />
+
+        {/* password reset route */}
+        <Route
+          path="/resets/:password_reset_token"
+          element={
+            <ResetLanding />
           }
         />
       </Routes>

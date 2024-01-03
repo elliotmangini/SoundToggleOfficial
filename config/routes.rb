@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :afters
     resources :befores
     resources :songs
-    resources :password_resets
+    # resources :password_resets
 
     post 'upload', to: 'songs#upload_song'
     post "songs/:id/before", to: "songs#set_before"
@@ -30,4 +30,7 @@ Rails.application.routes.draw do
     delete "/logout", to: "sessions#destroy"
     post "/avatar", to: "users#set_avatar"
     get '/users/public_profile/:username', to: 'users#public_profile'
+
+    post "password_resets", to: 'password_resets#create'
+    post "/password_resets/:password_reset_token", to: 'password_resets#accept'
 end

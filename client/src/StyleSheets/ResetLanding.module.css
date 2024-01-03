@@ -1,0 +1,27 @@
+.heading {
+    margin-top: .2rem;
+}
+
+.reset_panel {
+    background: var(--primary);
+    width: 50%;
+    margin: auto;
+    border-radius: 20px;
+    padding: 30px;
+    margin-top: 2rem;
+}
+
+.pass_input {
+    margin: 0;
+    display: block;
+}
+
+.pass_submit_button {
+    padding: 1rem;
+    color: var(--tertiary);
+    font-size: 1rem;
+}
+
+.pass_submit_button:hover {
+    background-color: var(--success);
+}
