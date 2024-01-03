@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'; // Use useNavigate
 
 import apiUrl from '../apiConfig.js';
 
+import style from "../StyleSheets/PasswordReset.module.css";
+
 
 export default function PasswordReset() {
   const [email, setEmail] = useState('');
@@ -49,20 +51,20 @@ export default function PasswordReset() {
   };
 
   return (
-    <div>
-      <h1>Reset Password</h1>
-      <form onSubmit={handleSubmit} method="post" action="your_password_resets_endpoint">
-        <div className="field">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={handleEmailChange}
-          />
+    <div className={style.request_panel}>
+      <h1 className={style.heading}>Password Reset</h1>
+      <form onSubmit={handleSubmit}>
+        <div className={style.email_input}>
+          <label>Email:&nbsp;
+            <input
+              type="email"
+              value={email}
+              onChange={handleEmailChange}
+            />
+          </label>
         </div>
-        <div className="actions">
-          <button type="submit">Reset Password</button>
+        <div>
+          <button className={style.email_submit_button} type="submit">Submit</button>
         </div>
       </form>
     </div>

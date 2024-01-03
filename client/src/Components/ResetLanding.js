@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 
 import style from "../StyleSheets/ResetLanding.module.css";
 
+import apiUrl from './apiConfig.js';
+
 export default function ResetLanding() {
   const { password_reset_token } = useParams();
   const [password, setPassword] = useState("");
@@ -14,7 +16,7 @@ export default function ResetLanding() {
       e.preventDefault();
     }
     // API call to check the validity of the token
-    fetch(`/password_resets/${password_reset_token}`, {
+    fetch(`${apiUrl}/password_resets/${password_reset_token}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -40,7 +42,7 @@ export default function ResetLanding() {
 
   return (
     <div className={style.reset_panel}>
-      <h1 className={style.heading}>Reset Your Password</h1>
+      <h1 className={style.heading}>Update Password</h1>
       <h3 style={{ color: "var(--secondary)"}}>{clientError}</h3>
       <form onSubmit={handleSubmit}>
         <div className={style.pass_input}>
