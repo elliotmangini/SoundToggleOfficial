@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       users = User.all
   
       # Extract usernames and creation dates from the users
-      user_data = users.map { |user| { username: user.username, created_at: user.created_at } }
+      user_data = users.map { |user| { username: user.username, created_at: user.created_at, email: user.email } }
   
       # Sort user_data based on created_at in descending order (newest to oldest)
       user_data.sort_by! { |user| user[:created_at] }.reverse!

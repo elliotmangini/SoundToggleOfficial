@@ -42,6 +42,7 @@ export default function TicketDashboard() {
                 <a href={`https://soundtoggle.io/${user.username}`} target="_blank" rel="noopener noreferrer">
                   {user.username}
                 </a>
+                &nbsp; - {user.email} -
                 <span style={{ marginLeft: '10px' }}>created at {new Date(user.created_at).toLocaleString()}</span>
               </li>
             ))}
