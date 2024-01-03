@@ -56,11 +56,22 @@ export default function About() {
         </div>
         <p>
           We are Audio Engineers passionate about
-          delivering the seamless version-audio player we wished existed when we started our careers. Matt Ebso is founder of
+          delivering the seamless version-audio player we wished existed when we started our careers. <span>Matt Ebso</span> is founder of
           &nbsp;<a href="https://cloverleaf.audio/" target="_blank">Cloverleaf Audio-Visual</a>&nbsp;
-          based in Minneapolis, MN and Elliot is a &nbsp;<a href="https://elliotmangini.dev/" target="_blank">Developer</a>&nbsp;and Drum & Bass
+          based in Minneapolis, MN and <span>Elliot Mangini</span> is a &nbsp;<a href="https://elliotmangini.dev/" target="_blank">Developer</a>&nbsp;and Drum & Bass
           producer as &nbsp;<a href="https://www.youtube.com/watch?v=NNnNKWoEDDk&t=1622s" target="_blank">Big Sister</a>.
         </p>
+      </section>
+
+      <section>
+        <p>
+          <em>
+            "SoundToggle is an audio streaming platform that solves the multiple versions problem once and for all.
+            Built by two scrappy Audio Engineers, and built with Engineers, Educators, Artists, Developers, Plugin Manufacturers, and Audio Professionals in mind,
+            we hope the platform can help you bring more forth from your work, and we hope you will share your thoughts and feedback with us as we go to help shape the future of the app."
+          </em>
+        </p>
+        <p style={{ fontStyle: "italic"}}>Sincerly,<br/>- Matt Ebso & Elliot Mangini</p>
       </section>
 
       <section>

@@ -42,6 +42,10 @@
     font-size: 14px;
 }
 
+.about_page section p span {
+    color: var(--secondary) !important;
+}
+
 .version_section h4 {
     font-style: italic;
     letter-spacing: 1px;
