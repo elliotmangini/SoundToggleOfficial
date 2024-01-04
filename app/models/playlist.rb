@@ -1,7 +1,7 @@
 class Playlist < ApplicationRecord
   belongs_to :user
   belongs_to :theme
-  has_many :songs, dependent: :destroy
+  has_many :songs, -> { order(created_at: :desc) }, dependent: :destroy
   has_many :playlist_tags
   has_many :tags, through: :playlist_tags
 
