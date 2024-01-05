@@ -650,6 +650,7 @@ export default function AudioPlayer({ user, playlist, setPlaylistToDisplay, setU
                       <>
                         <div className={style.share_and_status}>
                           {song.before.audio_url && song.after.audio_url ? ( // Check if audio URLs exist
+                            // TODO: check for potential audio duration mismatch
                             <div className={style.green_bubble}>
                               <div className={style.check}></div>
                             </div>

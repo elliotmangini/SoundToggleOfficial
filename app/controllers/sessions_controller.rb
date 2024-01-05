@@ -2,7 +2,9 @@ class SessionsController < ApplicationController
     skip_before_action :authorize, only: :create
   
     def create
-      user = User.find_by(username: params[:username])
+      login_identifier = params[:username].include?('@') ? :email : :username
+      user = User.find_by(login_identifier => params[:username])
+    
       if user&.authenticate(params[:password])
         session[:user_id] = user.id
         render json: user, include: ['songs.before', 'songs.after']
