@@ -1,3 +1,5 @@
+require "MailchimpMarketing"
+
 class UsersController < ApplicationController
   skip_before_action :authorize, only: [:create, :public_profile]
 
@@ -11,6 +13,25 @@ class UsersController < ApplicationController
     user.save
     featured_playlist = Playlist.create!(name: 'Featured Playlist', theme: Theme.find_by(name: "Classic"), user: user)
     user.featured_playlist = featured_playlist
+
+    mailchimp = MailchimpMarketing::Client.new
+    mailchimp.set_config({
+      :api_key => Rails.application.credentials.dig(:mailchimp, :api_key),
+      :server => Rails.application.credentials.dig(:mailchimp, :server)
+    })
+    list_id = Rails.application.credentials.dig(:mailchimp, :audience)
+    subscribing_user = {
+      username: params[:username],
+      email_address: params[:email]
+    }
+    response = mailchimp.lists.add_list_member list_id, {
+      email_address: subscribing_user[:email_address],
+      status: "subscribed",
+      merge_fields: {
+        UNAME: subscribing_user[:username],
+      },
+    }
+
     session[:user_id] = user.id
     render json: user, status: :created
   end
