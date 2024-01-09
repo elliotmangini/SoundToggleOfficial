@@ -30,6 +30,7 @@ class UsersController < ApplicationController
       merge_fields: {
         UNAME: subscribing_user[:username],
       },
+      tags: ["New User Tag", "Found Us: #{params[:found_us]}", "User Type: #{params[:tag]}"]
     }
 
     session[:user_id] = user.id
