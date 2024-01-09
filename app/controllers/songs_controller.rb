@@ -71,6 +71,7 @@ class SongsController < ApplicationController
         before.audio.purge # Remove the existing audio file
       end
       before.audio.attach(params[:before]) # Attach the new audio file
+      @current_user.tell_mailchimp_has_user_ever_uploaded if Rails.env.production?
     end
     @current_user.update_user_storage
     render json: @song, status: :ok
@@ -84,6 +85,7 @@ class SongsController < ApplicationController
         after.audio.purge # Remove the existing audio file
       end
       after.audio.attach(params[:after]) # Attach the new audio file
+      @current_user.tell_mailchimp_has_user_ever_uploaded if Rails.env.production?
     end
     @current_user.update_user_storage
     render json: @song, status: :ok
@@ -116,7 +118,7 @@ class SongsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_song
       @song = Song.find(params[:id])
-    end
+    end   
 
     # Only allow a list of trusted parameters through.
     def song_params

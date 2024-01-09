@@ -51,6 +51,33 @@ class User < ApplicationRecord
       }
     end
 
+    def tell_mailchimp_has_user_ever_uploaded
+      # OPTIMIZE THIS BY ADDING A COLUMN TO THE USER AND STORING THE HAS UPLOADED CHECK THEN ONLY DO ALL THIS STUFF IF WE NEED TO
+      has_uploaded = self.playlists.any? do |playlist|
+        playlist.songs.each do |song|
+          song.after.audio.attached? && song.before.audio.attached?
+        end
+      end
+    
+      if has_uploaded
+        mailchimp = MailchimpMarketing::Client.new
+        mailchimp.set_config({
+          api_key: Rails.application.credentials.dig(:mailchimp, :api_key),
+          server: Rails.application.credentials.dig(:mailchimp, :server)
+        })
+        list_id = Rails.application.credentials.dig(:mailchimp, :audience)
+        subscriber_hash = Digest::MD5.hexdigest(self.email.downcase)
+        response = mailchimp.lists.update_list_member_tags(list_id, subscriber_hash, {
+          tags: [
+            {
+              name: "Has Uploaded Pair",
+              status: "active"
+            }
+          ]
+        })
+      end
+    end
+
     def generate_password_reset_token
       self.password_reset_token = SecureRandom.urlsafe_base64
       self.password_reset_sent_at = Time.zone.now
